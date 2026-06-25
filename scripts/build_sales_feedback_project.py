@@ -156,6 +156,10 @@ def fmt_number(value: float) -> str:
     return f"{value:,.0f}".replace(",", " ")
 
 
+def calc_nps(series: pd.Series) -> float:
+    return (series.eq("promoter").mean() - series.eq("detractor").mean()) * 100
+
+
 def svg_shell(title: str, body: str, width: int = 960, height: int = 540) -> str:
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">
   <style>
@@ -244,7 +248,7 @@ def build_dashboard(df: pd.DataFrame) -> str:
     avg_rating = df["rating"].mean()
     problem_share = df["has_problem"].mean()
     avg_response = df["response_time_hours"].mean()
-    nps = (df["nps_group"].eq("promoter").mean() - df["nps_group"].eq("detractor").mean()) * 100
+    nps = calc_nps(df["nps_group"])
     worst_category = df.groupby("category")["has_problem"].mean().sort_values(ascending=False).index[0]
 
     cards = [
@@ -266,7 +270,7 @@ def build_dashboard(df: pd.DataFrame) -> str:
             f'<text x="{x + 22}" y="{y + 38}" font-size="14" fill="#64748B">{label}</text>'
             f'<text x="{x + 22}" y="{y + 78}" font-size="26" font-weight="750" fill="#1E3A5F">{value}</text>'
         )
-    return svg_shell("Executive Dashboard", "\n  ".join(card_svg), width=960, height=460)
+    return svg_shell("Управленческий дашборд", "\n  ".join(card_svg), width=960, height=460)
 
 
 def build_charts(df: pd.DataFrame) -> None:
@@ -312,6 +316,8 @@ def build_outputs(df: pd.DataFrame) -> None:
         )
         .sort_values("problem_share", ascending=False)
     )
+    product_nps = df.groupby("product")["nps_group"].apply(calc_nps).round(0).reset_index(name="nps")
+    segment = segment.merge(product_nps, on="product", how="left")
     segment.to_csv(RESULT / "product_metrics.csv", index=False)
 
     worst_product = segment.iloc[0]["product"]
@@ -334,18 +340,24 @@ def build_outputs(df: pd.DataFrame) -> None:
                 "focus": worst_product,
                 "problem": f"самая высокая доля проблемных заказов, частая причина - {worst_product_issue}",
                 "action": worst_product_action,
+                "owner": "руководитель отдела продаж",
+                "success_metric": "снижение доли проблемных заказов по продукту",
             },
             {
                 "priority": 2,
                 "focus": revenue_priority,
                 "problem": f"высокая выручка и повторяющаяся причина обратной связи - {revenue_priority_issue}",
                 "action": f"подготовить шаблон ответа по причине '{revenue_priority_issue}' и обновить описание условий в коммерческом предложении",
+                "owner": "менеджеры продаж",
+                "success_metric": "рост средней оценки и снижение повторяющейся причины",
             },
             {
                 "priority": 3,
                 "focus": "Почтовый канал",
                 "problem": "самое долгое время ответа",
                 "action": "ввести SLA на первый ответ и ежедневный список необработанных писем",
+                "owner": "старший менеджер",
+                "success_metric": "снижение среднего времени первого ответа",
             },
         ]
     )
@@ -354,7 +366,7 @@ def build_outputs(df: pd.DataFrame) -> None:
     total_revenue = df["revenue"].sum()
     avg_rating = df["rating"].mean()
     problem_share = df["has_problem"].mean()
-    nps = (df["nps_group"].eq("promoter").mean() - df["nps_group"].eq("detractor").mean()) * 100
+    nps = calc_nps(df["nps_group"])
     avg_response = df["response_time_hours"].mean()
     top_issue = Counter(df[df["has_problem"]]["feedback_reason"]).most_common(1)[0][0]
     worst_category = df.groupby("category")["has_problem"].mean().sort_values(ascending=False).index[0]
@@ -383,7 +395,7 @@ def build_outputs(df: pd.DataFrame) -> None:
 |---|---|---|
 | Чем дольше время ответа, тем ниже оценка клиента | Подтверждена | {fast_response_rating:.2f} при ответе до 12 часов против {slow_response_rating:.2f} при ответе дольше 24 часов |
 | Отдельные категории получают больше негативной обратной связи | Подтверждена | Самая рискованная категория - {worst_category} |
-| Высокая выручка сама по себе означает высокий NPS | Не подтверждена | Часть выручковых продуктов остается в зоне риска из-за высокой доли проблемных заказов |
+| Высокая выручка сама по себе означает высокий NPS | Не подтверждена | Часть выручковых продуктов остается в зоне риска из-за высокой доли проблемных заказов и сниженного продуктового NPS |
 
 ## Рекомендации
 
@@ -397,7 +409,7 @@ def build_outputs(df: pd.DataFrame) -> None:
 - Использован смоделированный набор данных, отражающий типичную структуру выгрузки отдела продаж.
 - Период анализа ограничен шестью месяцами, поэтому сезонность отдельно не исследовалась.
 - Анализ показывает устойчивые паттерны в данных, но не доказывает причинно-следственную связь без дополнительной проверки.
-    """,
+""",
         encoding="utf-8",
     )
 
@@ -439,8 +451,10 @@ def build_outputs(df: pd.DataFrame) -> None:
 - 4 - passive;
 - 1-3 - detractor.
 
-Формула: NPS = доля promoter - доля detractor.
-    """,
+Формула: NPS = (доля promoter - доля detractor) x 100.
+
+Это адаптированный расчет для выгрузки с оценкой 1-5. В реальном проекте желательно использовать отдельный NPS-вопрос со шкалой 0-10.
+""",
         encoding="utf-8",
     )
 
@@ -559,7 +573,7 @@ def build_readme(df: pd.DataFrame) -> None:
     total_revenue = df["revenue"].sum()
     avg_rating = df["rating"].mean()
     problem_share = df["has_problem"].mean()
-    nps = (df["nps_group"].eq("promoter").mean() - df["nps_group"].eq("detractor").mean()) * 100
+    nps = calc_nps(df["nps_group"])
     avg_response = df["response_time_hours"].mean()
     worst_product = (
         df.groupby("product")["has_problem"]
@@ -579,6 +593,7 @@ def build_readme(df: pd.DataFrame) -> None:
         .sort_values(["revenue", "problem_share"], ascending=False)
         .iloc[0]["product"]
     )
+    revenue_priority_nps = calc_nps(df.loc[df["product"].eq(revenue_priority), "nps_group"])
     revenue_priority_issue = df[(df["product"].eq(revenue_priority)) & df["has_problem"]]["feedback_reason"].value_counts().index[0]
     top_issue = Counter(df[df["has_problem"]]["feedback_reason"]).most_common(1)[0][0]
     top_categories = df.groupby("category")["has_problem"].mean().sort_values(ascending=False).head(2).index.tolist()
@@ -625,11 +640,11 @@ def build_readme(df: pd.DataFrame) -> None:
 - выявить связь между временем ответа и удовлетворенностью клиентов;
 - подготовить рекомендации для повышения NPS и повторных продаж.
 
-## Executive Dashboard
+## Управленческий дашборд
 
-![Executive Dashboard](screenshots/00_executive_dashboard.svg)
+![Управленческий дашборд](screenshots/00_executive_dashboard.svg)
 
-Dashboard содержит:
+Дашборд содержит:
 
 - KPI-карточки по выручке, средней оценке, NPS, доле проблемных заказов и времени ответа;
 - зону риска по категории товаров;
@@ -665,7 +680,9 @@ Dashboard содержит:
 - 4 - passive;
 - 1-3 - detractor.
 
-Формула: NPS = доля promoter - доля detractor.
+Формула: NPS = (доля promoter - доля detractor) x 100.
+
+Это адаптированный расчет для выгрузки с оценкой 1-5. В реальном проекте желательно использовать отдельный NPS-вопрос со шкалой 0-10.
 
 ## Основные выводы
 
@@ -688,7 +705,7 @@ Dashboard содержит:
 |---|---|---|
 | Чем дольше время ответа, тем ниже оценка клиента | Подтверждена | {fast_rating:.2f} при ответе до 12 часов против {slow_rating:.2f} при ответе дольше 24 часов |
 | Отдельные категории получают больше негативной обратной связи | Подтверждена | Наиболее проблемные категории: {top_categories[0]} и {top_categories[1]} |
-| Высокая выручка сама по себе означает высокий NPS | Не подтверждена | Выручковые продукты могут оставаться в зоне риска из-за доли проблемных заказов |
+| Высокая выручка сама по себе означает высокий NPS | Не подтверждена | У `{revenue_priority}` высокая выручка, но продуктовый NPS составляет {revenue_priority_nps:.0f} |
 
 ## Использованные методы
 
@@ -716,8 +733,8 @@ Dashboard содержит:
 | Сбор данных | подготовлен смоделированный набор данных в формате CSV |
 | Очистка | обработанные данные с расчетными полями |
 | Анализ | продуктовые, клиентские и операционные метрики |
-| Визуализация | executive dashboard и графики |
-| Выводы | аналитическая записка и action plan |
+| Визуализация | управленческий дашборд и графики |
+| Выводы | аналитическая записка и план действий |
 
 ## Результаты
 
@@ -736,7 +753,7 @@ Dashboard содержит:
 
 ## Ключевые графики
 
-![Executive Dashboard](screenshots/00_executive_dashboard.svg)
+![Управленческий дашборд](screenshots/00_executive_dashboard.svg)
 
 ![Выручка по месяцам](screenshots/01_revenue_by_month.svg)
 
@@ -748,11 +765,11 @@ Dashboard содержит:
 
 ## Навыки
 
-Python, pandas, EDA, очистка данных, расчет метрик, NPS, визуализация, customer experience analytics, формирование рекомендаций.
+Python, pandas, EDA, очистка данных, расчет метрик, NPS, визуализация, аналитика клиентского опыта, формирование рекомендаций.
 
 ## Формулировка для резюме
 
-Провела анализ факторов, влияющих на удовлетворенность клиентов и продажи: очистила выгрузку на Python, рассчитала продуктовые и операционные метрики, выявила проблемные категории, оценила связь времени ответа с оценкой клиента, подготовила executive dashboard и рекомендации для повышения NPS.
+Провела анализ факторов, влияющих на удовлетворенность клиентов и продажи: очистила выгрузку на Python, рассчитала продуктовые и операционные метрики, выявила проблемные категории, оценила связь времени ответа с оценкой клиента, подготовила управленческий дашборд и рекомендации для повышения NPS.
 """,
         encoding="utf-8",
     )

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="820" viewBox="0 0 1180 820">
+<style>
+text{font-family:Inter,Segoe UI,Arial,sans-serif;letter-spacing:0}
+</style>
+<rect width="1180" height="820" fill="#F8FAFC"/>
+<text x="54" y="56" font-size="28" font-weight="800" fill="#1E3A5F">SQL + BI дашборд продаж</text>
+<text x="54" y="80" font-size="14" fill="#64748B">Ключевые метрики продаж, маржинальности и дебиторской задолженности</text>
+<rect x="54" y="98" width="260" height="86" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/><text x="72" y="128" font-size="13" fill="#64748B">Выручка</text><text x="72" y="160" font-size="24" font-weight="750" fill="#1E3A5F">152 442 883 ₽</text><rect x="354" y="98" width="260" height="86" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/><text x="372" y="128" font-size="13" fill="#64748B">Заказы</text><text x="372" y="160" font-size="24" font-weight="750" fill="#1E3A5F">1 660</text><rect x="654" y="98" width="260" height="86" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/><text x="672" y="128" font-size="13" fill="#64748B">Средний чек</text><text x="672" y="160" font-size="24" font-weight="750" fill="#1E3A5F">91 833 ₽</text><rect x="54" y="213" width="260" height="86" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/><text x="72" y="243" font-size="13" fill="#64748B">Маржинальность</text><text x="72" y="275" font-size="24" font-weight="750" fill="#1E3A5F">23.4%</text><rect x="354" y="213" width="260" height="86" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/><text x="372" y="243" font-size="13" fill="#64748B">Дебиторка</text><text x="372" y="275" font-size="24" font-weight="750" fill="#1E3A5F">25 128 577 ₽</text><rect x="654" y="213" width="260" height="86" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/><text x="672" y="243" font-size="13" fill="#64748B">Топ-категория</text><text x="672" y="275" font-size="24" font-weight="750" fill="#1E3A5F">Серверы</text>
+<text x="54" y="330" font-size="20" font-weight="750" fill="#1E3A5F">Выручка по категориям</text>
+<text x="208" y="402" text-anchor="end" font-size="13" fill="#1F2937">Серверы</text><rect x="220" y="380" width="360.0" height="26" rx="5" fill="#2B6CB0"/><text x="590.0" y="399" font-size="12" fill="#475569">72 254 845</text>
+<text x="208" y="444" text-anchor="end" font-size="13" fill="#1F2937">Сеть</text><rect x="220" y="422" width="124.5" height="26" rx="5" fill="#2B6CB0"/><text x="354.5" y="441" font-size="12" fill="#475569">24 998 006</text>
+<text x="208" y="486" text-anchor="end" font-size="13" fill="#1F2937">Ноутбуки</text><rect x="220" y="464" width="112.3" height="26" rx="5" fill="#2B6CB0"/><text x="342.3" y="483" font-size="12" fill="#475569">22 539 965</text>
+<text x="208" y="528" text-anchor="end" font-size="13" fill="#1F2937">Инфраструктура</text><rect x="220" y="506" width="66.6" height="26" rx="5" fill="#2B6CB0"/><text x="296.6" y="525" font-size="12" fill="#475569">13 365 462</text>
+<text x="208" y="570" text-anchor="end" font-size="13" fill="#1F2937">Мониторы</text><rect x="220" y="548" width="40.8" height="26" rx="5" fill="#2B6CB0"/><text x="270.8" y="567" font-size="12" fill="#475569">8 191 788</text>
+<text x="208" y="612" text-anchor="end" font-size="13" fill="#1F2937">Комплектующие</text><rect x="220" y="590" width="37.2" height="26" rx="5" fill="#2B6CB0"/><text x="267.2" y="609" font-size="12" fill="#475569">7 463 124</text>
+<text x="670" y="330" font-size="20" font-weight="750" fill="#1E3A5F">Клиенты с задолженностью</text>
+<text x="838" y="402" text-anchor="end" font-size="13" fill="#1F2937">Клиент 0028</text><rect x="850" y="380" width="260.0" height="26" rx="5" fill="#C05621"/><text x="1120.0" y="399" font-size="12" fill="#475569">963 024</text>
+<text x="838" y="444" text-anchor="end" font-size="13" fill="#1F2937">Клиент 0102</text><rect x="850" y="422" width="201.1" height="26" rx="5" fill="#C05621"/><text x="1061.1" y="441" font-size="12" fill="#475569">744 898</text>
+<text x="838" y="486" text-anchor="end" font-size="13" fill="#1F2937">Клиент 0180</text><rect x="850" y="464" width="159.3" height="26" rx="5" fill="#C05621"/><text x="1019.3" y="483" font-size="12" fill="#475569">589 983</text>
+<text x="838" y="528" text-anchor="end" font-size="13" fill="#1F2937">Клиент 0197</text><rect x="850" y="506" width="149.5" height="26" rx="5" fill="#C05621"/><text x="1009.5" y="525" font-size="12" fill="#475569">553 633</text>
+<text x="838" y="570" text-anchor="end" font-size="13" fill="#1F2937">Клиент 0331</text><rect x="850" y="548" width="137.0" height="26" rx="5" fill="#C05621"/><text x="997.0" y="567" font-size="12" fill="#475569">507 619</text>
+<text x="838" y="612" text-anchor="end" font-size="13" fill="#1F2937">Клиент 0125</text><rect x="850" y="590" width="131.5" height="26" rx="5" fill="#C05621"/><text x="991.5" y="609" font-size="12" fill="#475569">487 181</text>
+<text x="54" y="535" font-size="20" font-weight="750" fill="#1E3A5F">Динамика выручки по месяцам</text>
+
+<path d="M 72 585 L 722 585" stroke="#CBD5E1"/>
+<polyline points="72.0,400.0 202.0,470.9 332.0,478.1 462.0,585.0 592.0,472.4 722.0,490.4" fill="none" stroke="#1E3A5F" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="72.0" cy="400.0" r="5" fill="#1E3A5F"/><circle cx="202.0" cy="470.9" r="5" fill="#1E3A5F"/><circle cx="332.0" cy="478.1" r="5" fill="#1E3A5F"/><circle cx="462.0" cy="585.0" r="5" fill="#1E3A5F"/><circle cx="592.0" cy="472.4" r="5" fill="#1E3A5F"/><circle cx="722.0" cy="490.4" r="5" fill="#1E3A5F"/>
+<text x="72.0" y="617" text-anchor="middle" font-size="12" fill="#64748B">01</text><text x="202.0" y="617" text-anchor="middle" font-size="12" fill="#64748B">02</text><text x="332.0" y="617" text-anchor="middle" font-size="12" fill="#64748B">03</text><text x="462.0" y="617" text-anchor="middle" font-size="12" fill="#64748B">04</text><text x="592.0" y="617" text-anchor="middle" font-size="12" fill="#64748B">05</text><text x="722.0" y="617" text-anchor="middle" font-size="12" fill="#64748B">06</text>
+
+<rect x="790" y="575" width="310" height="125" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+<text x="815" y="615" font-size="15" fill="#64748B">Канал с максимальной выручкой</text>
+<text x="815" y="655" font-size="26" font-weight="750" fill="#1E3A5F">сайт</text>
+<text x="815" y="686" font-size="13" fill="#64748B">Используется для приоритизации BI-отчета</text>
+</svg>
