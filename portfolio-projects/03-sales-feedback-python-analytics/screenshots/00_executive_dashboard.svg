@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="460" viewBox="0 0 960 460">
+  <style>
+    text{font-family:Inter,Segoe UI,Arial,sans-serif;letter-spacing:0}
+  </style>
+  <rect width="960" height="460" fill="#F8FAFC"/>
+  <rect x="24" y="20" width="912" height="420" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="48" y="62" font-size="24" font-weight="750" fill="#1E3A5F">Executive Dashboard</text>
+  <rect x="70" y="120" width="245" height="112" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/><text x="92" y="158" font-size="14" fill="#64748B">Выручка</text><text x="92" y="198" font-size="26" font-weight="750" fill="#1E3A5F">635 500 827 ₽</text>
+  <rect x="355" y="120" width="245" height="112" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/><text x="377" y="158" font-size="14" fill="#64748B">Средняя оценка</text><text x="377" y="198" font-size="26" font-weight="750" fill="#1E3A5F">4.19 / 5</text>
+  <rect x="640" y="120" width="245" height="112" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/><text x="662" y="158" font-size="14" fill="#64748B">NPS</text><text x="662" y="198" font-size="26" font-weight="750" fill="#1E3A5F">26</text>
+  <rect x="70" y="270" width="245" height="112" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/><text x="92" y="308" font-size="14" fill="#64748B">Проблемные заказы</text><text x="92" y="348" font-size="26" font-weight="750" fill="#1E3A5F">29.0%</text>
+  <rect x="355" y="270" width="245" height="112" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/><text x="377" y="308" font-size="14" fill="#64748B">Среднее время ответа</text><text x="377" y="348" font-size="26" font-weight="750" fill="#1E3A5F">15 ч</text>
+  <rect x="640" y="270" width="245" height="112" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/><text x="662" y="308" font-size="14" fill="#64748B">Зона риска</text><text x="662" y="348" font-size="26" font-weight="750" fill="#1E3A5F">Редукторы</text>
+</svg>
