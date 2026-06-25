@@ -140,7 +140,8 @@ const asIsEdges = [
 ];
 
 const toBeNodes = [
-  { id: "to-start", label: "Инициатор заполняет единую форму", style: startStyle, x: 70, y: 115, width: 150, height: 60 },
+  { id: "to-start", label: "Клиент отправляет запрос", style: startStyle, x: 70, y: 115, width: 150, height: 60 },
+  { id: "to-register", label: "Менеджер регистрирует заявку в 1С", style: taskStyle, x: 270, y: 250, width: 180, height: 70 },
   { id: "to-validate", label: "1С проверяет обязательные поля", style: systemStyle, x: 270, y: 405, width: 180, height: 70 },
   { id: "to-gateway-valid", label: "Данные корректны?", style: gatewayStyle, x: 500, y: 395, width: 120, height: 90 },
   { id: "to-return", label: "Вернуть на дозаполнение", style: systemStyle, x: 500, y: 115, width: 180, height: 70 },
@@ -157,7 +158,8 @@ const toBeNodes = [
 ];
 
 const toBeEdges = [
-  { from: "to-start", to: "to-validate", points: [{ x: 245, y: 145 }, { x: 245, y: 440 }] },
+  { from: "to-start", to: "to-register" },
+  { from: "to-register", to: "to-validate", start: "bottom", end: "top" },
   { from: "to-validate", to: "to-gateway-valid" },
   { from: "to-gateway-valid", to: "to-return", label: "Нет", start: "top", end: "bottom", points: [{ x: 560, y: 360 }, { x: 590, y: 360 }], labelAt: { x: 575, y: 350 } },
   { from: "to-return", to: "to-start", start: "left", end: "right", points: [{ x: 360, y: 150 }, { x: 360, y: 145 }] },
