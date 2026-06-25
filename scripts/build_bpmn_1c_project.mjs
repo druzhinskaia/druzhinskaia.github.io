@@ -3,8 +3,7 @@ import path from "node:path";
 
 const rootDir = process.cwd();
 const projectDir = path.join(rootDir, "portfolio-projects/02-bpmn-1c-requirements");
-const diagramsDir = path.join(projectDir, "diagrams");
-const screenshotsDir = path.join(projectDir, "screenshots");
+const bpmnDir = path.join(projectDir, "03-bpmn");
 
 const COLORS = {
   navy: "#1F4E78",
@@ -239,12 +238,11 @@ function svgDiagram(title, nodes, edges) {
 }
 
 async function main() {
-  await fs.mkdir(diagramsDir, { recursive: true });
-  await fs.mkdir(screenshotsDir, { recursive: true });
-  await fs.writeFile(path.join(diagramsDir, "as-is-process.drawio"), drawioDiagram("AS-IS process", 1680, 820, lanes, asIsNodes, asIsEdges));
-  await fs.writeFile(path.join(diagramsDir, "to-be-process.drawio"), drawioDiagram("TO-BE process", 1680, 820, lanes, toBeNodes, toBeEdges));
-  await fs.writeFile(path.join(screenshotsDir, "as-is-process.svg"), svgDiagram("AS-IS: текущий процесс обработки заявки", asIsNodes, asIsEdges));
-  await fs.writeFile(path.join(screenshotsDir, "to-be-process.svg"), svgDiagram("TO-BE: целевой процесс обработки заявки", toBeNodes, toBeEdges));
+  await fs.mkdir(bpmnDir, { recursive: true });
+  await fs.writeFile(path.join(bpmnDir, "as-is.drawio"), drawioDiagram("AS-IS process", 1680, 820, lanes, asIsNodes, asIsEdges));
+  await fs.writeFile(path.join(bpmnDir, "to-be.drawio"), drawioDiagram("TO-BE process", 1680, 820, lanes, toBeNodes, toBeEdges));
+  await fs.writeFile(path.join(bpmnDir, "as-is.svg"), svgDiagram("AS-IS: текущий процесс обработки заявки", asIsNodes, asIsEdges));
+  await fs.writeFile(path.join(bpmnDir, "to-be.svg"), svgDiagram("TO-BE: целевой процесс обработки заявки", toBeNodes, toBeEdges));
 }
 
 main().catch((error) => {

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760" viewBox="0 0 1180 760">
+  <rect width="1180" height="760" fill="#f7fafc"/>
+  <rect x="40" y="36" width="1100" height="688" rx="8" fill="#ffffff" stroke="#c9d6e2"/>
+  <text x="70" y="82" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#1f4e78">Заявка клиента</text>
+  <text x="70" y="112" font-family="Arial, sans-serif" font-size="14" fill="#64748b">Форма документа 1С для единой регистрации и контроля заявки</text>
+
+  <rect x="70" y="145" width="1040" height="76" rx="6" fill="#eef4fa" stroke="#b7c9da"/>
+  <text x="95" y="176" font-family="Arial, sans-serif" font-size="14" fill="#475569">Номер</text>
+  <rect x="95" y="186" width="145" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="110" y="203" font-family="Arial, sans-serif" font-size="13" fill="#334155">AUTO-000245</text>
+  <text x="275" y="176" font-family="Arial, sans-serif" font-size="14" fill="#475569">Дата создания</text>
+  <rect x="275" y="186" width="145" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="290" y="203" font-family="Arial, sans-serif" font-size="13" fill="#334155">25.06.2026</text>
+  <text x="455" y="176" font-family="Arial, sans-serif" font-size="14" fill="#475569">Статус</text>
+  <rect x="455" y="186" width="145" height="24" rx="4" fill="#d9ead3" stroke="#70ad47"/>
+  <text x="492" y="203" font-family="Arial, sans-serif" font-size="13" fill="#1f2933">Новая</text>
+  <text x="635" y="176" font-family="Arial, sans-serif" font-size="14" fill="#475569">Приоритет *</text>
+  <rect x="635" y="186" width="145" height="24" rx="4" fill="#fff7ed" stroke="#f4b183"/>
+  <text x="684" y="203" font-family="Arial, sans-serif" font-size="13" fill="#1f2933">Высокий</text>
+  <text x="815" y="176" font-family="Arial, sans-serif" font-size="14" fill="#475569">SLA</text>
+  <rect x="815" y="186" width="145" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="850" y="203" font-family="Arial, sans-serif" font-size="13" fill="#334155">1 рабочий день</text>
+
+  <text x="70" y="268" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#1f4e78">Данные заявки</text>
+  <text x="70" y="310" font-family="Arial, sans-serif" font-size="14" fill="#475569">Инициатор *</text>
+  <rect x="70" y="322" width="330" height="40" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="90" y="347" font-family="Arial, sans-serif" font-size="14" fill="#334155">ООО "МеталлПром"</text>
+  <text x="430" y="310" font-family="Arial, sans-serif" font-size="14" fill="#475569">Категория *</text>
+  <rect x="430" y="322" width="330" height="40" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="450" y="347" font-family="Arial, sans-serif" font-size="14" fill="#334155">Коммерческое предложение</text>
+  <text x="790" y="310" font-family="Arial, sans-serif" font-size="14" fill="#475569">Ответственный</text>
+  <rect x="790" y="322" width="320" height="40" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="810" y="347" font-family="Arial, sans-serif" font-size="14" fill="#334155">Иванова А.А.</text>
+
+  <text x="70" y="398" font-family="Arial, sans-serif" font-size="14" fill="#475569">Тема *</text>
+  <rect x="70" y="410" width="1040" height="40" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="90" y="435" font-family="Arial, sans-serif" font-size="14" fill="#334155">Запрос цены на промышленный компрессор</text>
+  <text x="70" y="486" font-family="Arial, sans-serif" font-size="14" fill="#475569">Описание *</text>
+  <rect x="70" y="498" width="1040" height="92" rx="5" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="90" y="526" font-family="Arial, sans-serif" font-size="14" fill="#334155">Клиент запросил расчет стоимости, срок поставки и условия оплаты.</text>
+
+  <text x="70" y="635" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#1f4e78">Контроль и согласование</text>
+  <rect x="70" y="655" width="330" height="36" rx="5" fill="#fef2f2" stroke="#c00000"/>
+  <text x="95" y="678" font-family="Arial, sans-serif" font-size="14" fill="#7f1d1d">Требуется согласование руководителя</text>
+  <rect x="430" y="655" width="330" height="36" rx="5" fill="#eef4fa" stroke="#5b9bd5"/>
+  <text x="455" y="678" font-family="Arial, sans-serif" font-size="14" fill="#1f2933">История статусов доступна в карточке</text>
+  <rect x="790" y="655" width="320" height="36" rx="5" fill="#d9ead3" stroke="#70ad47"/>
+  <text x="815" y="678" font-family="Arial, sans-serif" font-size="14" fill="#1f2933">Сохранить и назначить SLA</text>
+</svg>
