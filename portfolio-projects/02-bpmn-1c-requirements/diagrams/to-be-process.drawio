@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-06-25T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="to-be-process" name="TO-BE process">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1520" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+    <mxCell id="lane-client" value="Инициатор" style="swimlane;html=1;horizontal=0;startSize=34;fillColor=#F7FAFC;strokeColor=#B7C9DA;fontColor=#1F2933;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="80" width="1480" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="lane-manager" value="Менеджер" style="swimlane;html=1;horizontal=0;startSize=34;fillColor=#EEF4FA;strokeColor=#B7C9DA;fontColor=#1F2933;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="200" width="1480" height="170" as="geometry" />
+    </mxCell>
+    <mxCell id="lane-1c" value="1С" style="swimlane;html=1;horizontal=0;startSize=34;fillColor=#F7FAFC;strokeColor=#B7C9DA;fontColor=#1F2933;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="370" width="1480" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="lane-head" value="Руководитель" style="swimlane;html=1;horizontal=0;startSize=34;fillColor=#EEF4FA;strokeColor=#B7C9DA;fontColor=#1F2933;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="510" width="1480" height="150" as="geometry" />
+    </mxCell>
+    <mxCell id="lane-exec" value="Исполнитель" style="swimlane;html=1;horizontal=0;startSize=34;fillColor=#F7FAFC;strokeColor=#B7C9DA;fontColor=#1F2933;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="660" width="1480" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="to-start" value="Инициатор заполняет единую форму" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D9EAD3;strokeColor=#70AD47;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="70" y="115" width="150" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="to-validate" value="1С проверяет обязательные поля" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D9EAD3;strokeColor=#70AD47;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="270" y="405" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="to-gateway-valid" value="Данные корректны?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#1F4E78;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="500" y="395" width="120" height="90" as="geometry" />
+    </mxCell>
+    <mxCell id="to-return" value="Вернуть на дозаполнение" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D9EAD3;strokeColor=#70AD47;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="500" y="115" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="to-create" value="Создать заявку со статусом Новая" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D9EAD3;strokeColor=#70AD47;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="680" y="405" width="190" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="to-assign" value="Назначить ответственного и SLA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D9EAD3;strokeColor=#70AD47;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="920" y="405" width="190" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="to-work" value="Менеджер принимает в работу" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DDEBF7;strokeColor=#5B9BD5;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="1160" y="250" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="to-gateway-approve" value="Нужно согласование?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#1F4E78;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="1160" y="545" width="130" height="90" as="geometry" />
+    </mxCell>
+    <mxCell id="to-approve" value="Руководитель согласует в 1С" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DDEBF7;strokeColor=#5B9BD5;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="1350" y="555" width="170" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="to-execute" value="Исполнитель выполняет заявку" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DDEBF7;strokeColor=#5B9BD5;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="1320" y="700" width="180" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="to-close" value="1С фиксирует закрытие и обновляет отчет" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D9EAD3;strokeColor=#70AD47;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="1060" y="700" width="210" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="to-end" value="Заявка закрыта" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F4CCCC;strokeColor=#C00000;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="850" y="700" width="120" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="to-notify" value="Уведомления о новых и просроченных заявках" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D9EAD3;strokeColor=#70AD47;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="920" y="535" width="190" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="to-report" value="Отчет руководителя: статусы, SLA, ответственные" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D9EAD3;strokeColor=#70AD47;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="700" y="535" width="190" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-start" target="to-validate">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-validate" target="to-gateway-valid">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e3" value="Нет" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-gateway-valid" target="to-return">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-return" target="to-start">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e5" value="Да" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-gateway-valid" target="to-create">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-create" target="to-assign">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-assign" target="to-work">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-assign" target="to-notify">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-assign" target="to-report">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-work" target="to-gateway-approve">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e11" value="Да" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-gateway-approve" target="to-approve">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e12" value="Нет" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-gateway-approve" target="to-execute">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-approve" target="to-execute">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-execute" target="to-close">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="to-close" target="to-end">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

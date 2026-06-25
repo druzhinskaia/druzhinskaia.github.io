@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-06-25T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="as-is-process" name="AS-IS process">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1520" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+    <mxCell id="lane-client" value="Инициатор" style="swimlane;html=1;horizontal=0;startSize=34;fillColor=#F7FAFC;strokeColor=#B7C9DA;fontColor=#1F2933;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="80" width="1480" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="lane-manager" value="Менеджер" style="swimlane;html=1;horizontal=0;startSize=34;fillColor=#EEF4FA;strokeColor=#B7C9DA;fontColor=#1F2933;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="200" width="1480" height="170" as="geometry" />
+    </mxCell>
+    <mxCell id="lane-1c" value="1С" style="swimlane;html=1;horizontal=0;startSize=34;fillColor=#F7FAFC;strokeColor=#B7C9DA;fontColor=#1F2933;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="370" width="1480" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="lane-head" value="Руководитель" style="swimlane;html=1;horizontal=0;startSize=34;fillColor=#EEF4FA;strokeColor=#B7C9DA;fontColor=#1F2933;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="510" width="1480" height="150" as="geometry" />
+    </mxCell>
+    <mxCell id="lane-exec" value="Исполнитель" style="swimlane;html=1;horizontal=0;startSize=34;fillColor=#F7FAFC;strokeColor=#B7C9DA;fontColor=#1F2933;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="660" width="1480" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="as-start" value="Заявка поступила по почте или в чат" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D9EAD3;strokeColor=#70AD47;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="70" y="115" width="120" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="as-receive" value="Менеджер вручную принимает заявку" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4D6;strokeColor=#F4B183;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="240" y="250" width="170" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="as-check" value="Проверка данных вручную" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4D6;strokeColor=#F4B183;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="460" y="250" width="160" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="as-gateway-data" value="Данных достаточно?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#1F4E78;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="670" y="240" width="120" height="90" as="geometry" />
+    </mxCell>
+    <mxCell id="as-clarify" value="Запросить уточнение у инициатора" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4D6;strokeColor=#F4B183;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="650" y="115" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="as-create-1c" value="Создать документ в 1С вручную" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4D6;strokeColor=#F4B183;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="860" y="405" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="as-approve" value="Согласование вне системы" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4D6;strokeColor=#F4B183;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="1090" y="555" width="170" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="as-gateway-approve" value="Согласовано?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#1F4E78;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="1300" y="545" width="110" height="90" as="geometry" />
+    </mxCell>
+    <mxCell id="as-rework" value="Вернуть на доработку" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4D6;strokeColor=#F4B183;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="1080" y="250" width="170" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="as-execute" value="Передать исполнителю" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4D6;strokeColor=#F4B183;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="1270" y="700" width="170" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="as-close" value="Закрыть заявку и статус вручную" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4D6;strokeColor=#F4B183;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="1050" y="700" width="170" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="as-end" value="Заявка закрыта" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F4CCCC;strokeColor=#C00000;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="850" y="700" width="120" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="as-note-1" value="Проблема: нет единого канала и обязательных полей" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#F4CCCC;strokeColor=#C00000;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="250" y="95" width="210" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="as-note-2" value="Проблема: статусы и сроки контролируются вручную" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#F4CCCC;strokeColor=#C00000;fontColor=#1F2933;" vertex="1" parent="1">
+      <mxGeometry x="970" y="385" width="230" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="as-start" target="as-receive">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="as-receive" target="as-check">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="as-check" target="as-gateway-data">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e4" value="Нет" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="as-gateway-data" target="as-clarify">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="as-clarify" target="as-check">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e6" value="Да" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="as-gateway-data" target="as-create-1c">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="as-create-1c" target="as-approve">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="as-approve" target="as-gateway-approve">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e9" value="Нет" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="as-gateway-approve" target="as-rework">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="as-rework" target="as-check">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e11" value="Да" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="as-gateway-approve" target="as-execute">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="as-execute" target="as-close">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F4E78;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="as-close" target="as-end">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
