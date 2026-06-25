@@ -9,3 +9,4 @@
 | TS-05 | Overdue notification | Leave request open after SLA deadline | Head of sales receives overdue notification |
 | TS-06 | Status history | Change status from `Новая` to `В работе` | History contains date, user and new status |
 | TS-07 | Report | Open manager report | Report shows requests by status, overdue requests and responsible users |
+| TS-08 | Access rights | Try to change status dictionary as regular manager | System denies access and shows permission error |

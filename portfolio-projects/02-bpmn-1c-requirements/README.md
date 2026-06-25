@@ -2,25 +2,29 @@
 
 Смоделированный коммерческий кейс, основанный на типовых задачах бизнес-аналитика при автоматизации процессов в 1С.
 
-## Business Case
+## Как смотреть проект
+
+Рекомендуемый порядок просмотра: бизнес-кейс -> AS-IS BPMN -> root cause analysis -> требования и RTM -> TO-BE BPMN -> UI mockup -> техническое задание -> критерии приемки.
+
+## Бизнес-кейс
 
 ООО "ТехСнаб" продает промышленное оборудование и ежедневно обрабатывает около 200 клиентских заявок. Руководитель отдела продаж заметил, что средний срок обработки заявки вырос с 1 до 3 дней, а менеджеры одновременно использовали почту, Excel и 1С. Из-за этого заявки терялись, статусы обновлялись вручную, а отчет по просрочкам собирался уже после возникновения проблемы.
 
 Цель проекта - описать текущий процесс, выявить узкие места и подготовить пакет аналитических артефактов для доработки 1С.
 
-## Initial Metrics
+## Исходные метрики
 
-| Metric | Current State |
+| Метрика | Текущее состояние |
 |---|---|
-| Employees | 65 |
-| Sales managers | 15 |
-| Requests per day | about 200 |
-| Requests with data errors | about 18% |
-| Average request registration time | up to 12 minutes |
-| Average request processing time | up to 3 days |
-| Manual report preparation | about 2 hours per week |
+| Сотрудники | 65 |
+| Менеджеры продаж | 15 |
+| Заявки в день | около 200 |
+| Заявки с ошибками в данных | около 18% |
+| Среднее время регистрации заявки | до 12 минут |
+| Среднее время обработки заявки | до 3 дней |
+| Подготовка ручного отчета | около 2 часов в неделю |
 
-## Project Story
+## История проекта
 
 ```mermaid
 flowchart LR
@@ -35,25 +39,25 @@ flowchart LR
     I --> J["Acceptance criteria"]
 ```
 
-## Project Goals
+## Цели проекта
 
-- reduce manual data entry;
-- make request status transparent for managers and leadership;
-- speed up request registration;
-- prevent request loss across email, Excel and chats;
-- simplify SLA control for the head of sales.
+- снизить ручной ввод данных;
+- сделать статус заявки прозрачным для менеджеров и руководителя;
+- ускорить регистрацию заявки;
+- исключить потерю заявок между почтой, Excel и чатами;
+- упростить контроль SLA для руководителя отдела продаж.
 
-## Success Criteria
+## Критерии успеха
 
-| Metric | Before | Target |
+| Метрика | Было | Цель |
 |---|---|---|
-| Request registration time | up to 12 minutes | up to 4 minutes |
-| Requests with data errors | about 18% | less than 5% |
-| SLA compliance | about 85% | at least 98% |
-| Requests without responsible manager | possible | 0% |
-| Status visibility for head of sales | manual report | online in 1C |
+| Время регистрации заявки | до 12 минут | до 4 минут |
+| Заявки с ошибками в данных | около 18% | менее 5% |
+| Соблюдение SLA | около 85% | не менее 98% |
+| Заявки без ответственного | возможны | 0% |
+| Видимость статуса для руководителя | ручной отчет | онлайн в 1С |
 
-## Company Context
+## Контекст компании
 
 | Параметр | Значение |
 |---|---|
@@ -75,7 +79,7 @@ flowchart LR
 | Руководитель процесса | Руководитель отдела продаж | Контроль статусов, SLA и ответственных |
 | Исполнитель | Команда 1С | Понятные требования и критерии приемки |
 
-## Scope
+## Scope проекта
 
 ### In Scope
 
@@ -105,14 +109,14 @@ flowchart LR
 
 ## Project Timeline
 
-| Phase | Work | Status |
-|---|---|---|
-| Discovery | Business context, current metrics and process boundaries | Done |
-| Analysis | Stakeholder interviews, pain points, root cause analysis | Done |
-| Design | AS-IS/TO-BE BPMN, architecture, use cases | Done |
-| Requirements | BRD, FRD, RTM, user stories | Done |
-| Validation | UI mockup, acceptance criteria, test scenarios | Done |
-| Handover | Technical specification and demo materials | Done |
+| Период | Этап | Работы | Статус |
+|---|---|---|---|
+| 01.04-05.04 | Discovery | бизнес-контекст, текущие метрики, границы процесса | Done |
+| 08.04-12.04 | Analysis | интервью, pain points, root cause analysis | Done |
+| 15.04-19.04 | Design | AS-IS/TO-BE BPMN, architecture, use cases | Done |
+| 22.04-26.04 | Requirements | BRD, FRD, RTM, user stories | Done |
+| 29.04-03.05 | Validation | UI mockup, acceptance criteria, test scenarios | Done |
+| 06.05-10.05 | Handover | technical specification and demo materials | Done |
 
 ## Deliverables
 
@@ -124,6 +128,7 @@ flowchart LR
 | Functional Requirements | [04-requirements/functional-requirements.md](04-requirements/functional-requirements.md) |
 | Non-Functional Requirements | [04-requirements/non-functional.md](04-requirements/non-functional.md) |
 | User Stories | [04-requirements/user-stories.md](04-requirements/user-stories.md) |
+| Requirements Register | [04-requirements/requirements-register.md](04-requirements/requirements-register.md) |
 | Requirements Traceability Matrix | [04-requirements/requirements-traceability-matrix.md](04-requirements/requirements-traceability-matrix.md) |
 | Technical Specification | [06-specification/technical-specification.md](06-specification/technical-specification.md) |
 | UI Mockup | [05-ui/order-form.md](05-ui/order-form.md) |
@@ -143,11 +148,17 @@ flowchart LR
 
 ## Supporting Diagrams
 
-| Diagram | File |
-|---|---|
-| Solution Architecture | [03-bpmn/architecture.svg](03-bpmn/architecture.svg) |
-| Use Case Diagram | [03-bpmn/use-case.svg](03-bpmn/use-case.svg) |
-| Sequence Diagram | [03-bpmn/sequence.svg](03-bpmn/sequence.svg) |
+### Solution Architecture
+
+![Solution Architecture](03-bpmn/architecture.svg)
+
+### Use Case Diagram
+
+![Use Case Diagram](03-bpmn/use-case.svg)
+
+### Sequence Diagram
+
+![Sequence Diagram](03-bpmn/sequence.svg)
 
 ## Document Map
 
@@ -195,9 +206,9 @@ flowchart TD
 |   |-- business-requirements.md
 |   |-- functional-requirements.md
 |   |-- non-functional.md
+|   |-- requirements-register.md
 |   |-- requirements-traceability-matrix.md
 |   |-- user-stories.md
-|   `-- requirements-matrix.md
 |-- 05-ui
 |   |-- order-form.md
 |   `-- order-form-mockup.svg
