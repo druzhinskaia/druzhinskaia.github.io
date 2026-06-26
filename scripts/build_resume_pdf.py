@@ -79,7 +79,7 @@ def build() -> None:
                     "Портфолио: <link href='https://comfe2436-web.github.io/'>comfe2436-web.github.io</link><br/>"
                     "LinkedIn: <link href='https://www.linkedin.com/in/ekaterinadruzhinskaia/'>linkedin.com/in/ekaterinadruzhinskaia</link><br/>"
                     "Email: <link href='mailto:comfe2436@gmail.com'>comfe2436@gmail.com</link><br/>"
-                    "Telegram: <link href='https://t.me/dru_zh'>@dru_zh</link> · Телефон: +7 985 110 01 75",
+                    "Telegram: <link href='https://t.me/dru_zh'>https://t.me/dru_zh</link> · Телефон: +7 985 110 01 75",
                     link,
                 ),
             ]

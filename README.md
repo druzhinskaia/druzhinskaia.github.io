@@ -6,7 +6,7 @@
 - GitHub profile: [github.com/comfe2436-web](https://github.com/comfe2436-web)
 - LinkedIn: [linkedin.com/in/ekaterinadruzhinskaia](https://www.linkedin.com/in/ekaterinadruzhinskaia/)
 - PDF resume: [output/pdf/druzhinskaya-ekaterina-resume.pdf](output/pdf/druzhinskaya-ekaterina-resume.pdf)
-- Contacts: [comfe2436@gmail.com](mailto:comfe2436@gmail.com), [Telegram @dru_zh](https://t.me/dru_zh)
+- Contacts: [comfe2436@gmail.com](mailto:comfe2436@gmail.com), [Telegram: https://t.me/dru_zh](https://t.me/dru_zh)
 
 ## Коротко для рекрутера
 
