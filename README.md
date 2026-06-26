@@ -2,8 +2,8 @@
 
 Портфолио Екатерины Дружинской для ролей бизнес-аналитика, аналитика 1С, BI-аналитика, junior системного аналитика и аналитика данных. Кейсы оформлены как рабочие материалы для внутреннего заказчика: бизнес-проблема, KPI, данные, требования, расчеты, дашборды, выводы и рекомендации.
 
-- GitHub Pages: [https://comfe2436-web.github.io/](https://comfe2436-web.github.io/)
-- GitHub profile: [github.com/comfe2436-web](https://github.com/comfe2436-web)
+- GitHub Pages: [https://druzhinskaia.github.io/](https://druzhinskaia.github.io/)
+- GitHub profile: [github.com/druzhinskaia](https://github.com/druzhinskaia)
 - LinkedIn: [linkedin.com/in/ekaterinadruzhinskaia](https://www.linkedin.com/in/ekaterinadruzhinskaia/)
 - PDF resume: [output/pdf/druzhinskaya-ekaterina-resume.pdf](output/pdf/druzhinskaya-ekaterina-resume.pdf)
 - Contacts: [comfe2436@gmail.com](mailto:comfe2436@gmail.com), [Telegram @dru_zh](https://t.me/dru_zh)
@@ -30,7 +30,7 @@
 
 ## Как смотреть
 
-1. Начните с [https://comfe2436-web.github.io/](https://comfe2436-web.github.io/) или этого README.
+1. Начните с [https://druzhinskaia.github.io/](https://druzhinskaia.github.io/) или этого README.
 2. Откройте 2-3 проекта под целевую роль: для 1С и бизнес-анализа лучше начать с проектов 1 и 2, для BI/data - с проектов 3 и 4.
 3. В каждом проекте смотрите сначала README, затем артефакты: Excel, SQL, ноутбук, BPMN, ТЗ или дашборд.
 

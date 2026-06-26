@@ -36,7 +36,7 @@
 
 ![SQL + BI дашборд](screenshots/dashboard.png)
 
-Интерактивный прототип доступен онлайн: [Live demo](https://comfe2436-web.github.io/sales-performance-sql-bi-dashboard/dashboard/).
+Интерактивный прототип доступен онлайн: [Live demo](https://druzhinskaia.github.io/sales-performance-sql-bi-dashboard/dashboard/).
 
 Локально прототип можно открыть через [dashboard/index.html](dashboard/index.html). Он показывает логику управленческого дашборда и фильтрации, но не заменяет промышленную BI-систему.
 
@@ -99,7 +99,7 @@
 | Аналитические запросы | [sql/03_analytics_queries.sql](sql/03_analytics_queries.sql) |
 | Спецификация дашборда | [dashboard/dashboard_spec.md](dashboard/dashboard_spec.md) |
 | Автономный HTML-прототип | [dashboard/index.html](dashboard/index.html) |
-| Live demo | [GitHub Pages](https://comfe2436-web.github.io/sales-performance-sql-bi-dashboard/dashboard/) |
+| Live demo | [GitHub Pages](https://druzhinskaia.github.io/sales-performance-sql-bi-dashboard/dashboard/) |
 | Итоговые выгрузки | [result](result) |
 | Аналитические выводы | [result/insights.md](result/insights.md) |
 
