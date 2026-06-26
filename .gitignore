@@ -3,3 +3,14 @@ tmp/
 outputs/
 ~$*.xlsx
 tools/
+.DS_Store
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+.tmp-svg-render/
+tmp-svg-test/
+project-images-export/
+project-images-flat/
+project-images-gallery-flat/
+*.zip
+project-images-*-preview.png

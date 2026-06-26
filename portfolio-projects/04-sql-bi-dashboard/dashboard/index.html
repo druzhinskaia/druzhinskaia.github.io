@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sales Performance SQL & BI Dashboard</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #64748b;
+      --line: #cbd5e1;
+      --blue: #2b6cb0;
+      --blue-dark: #1e3a5f;
+      --orange: #c05621;
+      --green: #2f855a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    main {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 28px auto 44px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 32px;
+      line-height: 1.15;
+      color: var(--blue-dark);
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .control {
+      display: grid;
+      gap: 6px;
+      min-width: 220px;
+    }
+
+    label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    select {
+      width: 100%;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel);
+      color: var(--ink);
+      padding: 0 10px;
+      font: inherit;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .card, .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .card {
+      padding: 18px 20px;
+      min-height: 94px;
+    }
+
+    .card span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .card strong {
+      display: block;
+      color: var(--blue-dark);
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 18px 20px 20px;
+    }
+
+    .panel h2 {
+      margin: 0 0 16px;
+      color: var(--blue-dark);
+      font-size: 21px;
+      line-height: 1.25;
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 92px;
+      gap: 10px;
+      align-items: center;
+      min-height: 26px;
+      font-size: 14px;
+    }
+
+    .bar-label {
+      text-align: right;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .track {
+      height: 24px;
+      background: #e8eef6;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      border-radius: 5px;
+      background: var(--blue);
+    }
+
+    .bar.debt { background: var(--orange); }
+
+    .bar-value {
+      color: #334155;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 260px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 10px 8px;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left;
+    }
+
+    th {
+      color: var(--muted);
+      font-weight: 750;
+    }
+
+    td.num, th.num { text-align: right; }
+
+    .wide {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 860px) {
+      header, .grid, .kpis { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 112px 1fr 82px; }
+      h1 { font-size: 27px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>SQL + BI дашборд продаж</h1>
+      <p class="subtitle">Выручка, маржинальность, каналы продаж и дебиторская задолженность</p>
+    </div>
+    <div class="control">
+      <label for="channelFilter">Канал продаж</label>
+      <select id="channelFilter">
+        <option value="all">Все каналы</option>
+      </select>
+    </div>
+  </header>
+
+  <section class="kpis" id="kpis"></section>
+
+  <section class="grid">
+    <div class="panel">
+      <h2>Выручка по категориям</h2>
+      <div class="bar-list" id="categoryBars"></div>
+    </div>
+    <div class="panel">
+      <h2>Клиенты с задолженностью</h2>
+      <div class="bar-list" id="debtBars"></div>
+    </div>
+    <div class="panel wide">
+      <h2>Динамика выручки по месяцам</h2>
+      <svg id="lineChart" viewBox="0 0 900 260" role="img" aria-label="Динамика выручки"></svg>
+    </div>
+    <div class="panel wide">
+      <h2>Эффективность каналов</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Канал</th>
+            <th class="num">Заказы</th>
+            <th class="num">Выручка</th>
+            <th class="num">Средняя строка</th>
+            <th class="num">Ранг</th>
+          </tr>
+        </thead>
+        <tbody id="channelRows"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+const kpi = {
+  orders: 1660,
+  revenue: 152442883,
+  avgOrderValue: 91833,
+  marginPct: 0.234,
+  receivables: 25128577,
+  topCategory: "Серверы"
+};
+
+const monthly = [
+  { month: "2026-01", orders: 282, revenue: 29366862, profit: 6684671, marginPct: 0.228 },
+  { month: "2026-02", orders: 258, revenue: 25975321, profit: 5968902, marginPct: 0.230 },
+  { month: "2026-03", orders: 290, revenue: 25632911, profit: 6040740, marginPct: 0.236 },
+  { month: "2026-04", orders: 254, revenue: 20519713, profit: 4927435, marginPct: 0.240 },
+  { month: "2026-05", orders: 277, revenue: 25905623, profit: 6020549, marginPct: 0.232 },
+  { month: "2026-06", orders: 299, revenue: 25042453, profit: 5990506, marginPct: 0.239 }
+];
+
+const categories = [
+  { category: "Серверы", orders: 216, revenue: 72254845, profit: 13728421, marginPct: 0.190 },
+  { category: "Сеть", orders: 457, revenue: 24998006, profit: 6810788, marginPct: 0.272 },
+  { category: "Ноутбуки", orders: 205, revenue: 22539965, profit: 5184194, marginPct: 0.230 },
+  { category: "Инфраструктура", orders: 231, revenue: 13365462, profit: 3608668, marginPct: 0.270 },
+  { category: "Мониторы", orders: 210, revenue: 8191788, profit: 2539452, marginPct: 0.310 },
+  { category: "Комплектующие", orders: 419, revenue: 7463124, profit: 2327073, marginPct: 0.312 },
+  { category: "Периферия", orders: 451, revenue: 3629693, profit: 1434207, marginPct: 0.395 }
+];
+
+const debts = [
+  { customer: "Клиент 0028", segment: "B2B", region: "Краснодар", receivables: 963024, unpaidOrders: 3 },
+  { customer: "Клиент 0102", segment: "B2B", region: "Казань", receivables: 744898, unpaidOrders: 2 },
+  { customer: "Клиент 0180", segment: "B2C", region: "Санкт-Петербург", receivables: 589983, unpaidOrders: 3 },
+  { customer: "Клиент 0197", segment: "B2C", region: "Москва", receivables: 553633, unpaidOrders: 2 },
+  { customer: "Клиент 0331", segment: "B2C", region: "Москва", receivables: 507619, unpaidOrders: 2 },
+  { customer: "Клиент 0125", segment: "B2C", region: "Москва", receivables: 487181, unpaidOrders: 2 }
+];
+
+const channels = [
+  { channel: "сайт", orders: 598, revenue: 57114362, avgLineRevenue: 69398, rank: 1 },
+  { channel: "менеджер", orders: 417, revenue: 36979765, avgLineRevenue: 62572, rank: 2 },
+  { channel: "маркетплейс", orders: 361, revenue: 32957916, avgLineRevenue: 70725, rank: 3 },
+  { channel: "повторный заказ", orders: 284, revenue: 25390840, avgLineRevenue: 69947, rank: 4 }
+];
+
+const formatNumber = value => new Intl.NumberFormat("ru-RU").format(Math.round(value));
+const formatRub = value => `${formatNumber(value)} ₽`;
+const formatPct = value => `${(value * 100).toFixed(1)}%`;
+
+const channelFilter = document.querySelector("#channelFilter");
+channels.forEach(item => {
+  const option = document.createElement("option");
+  option.value = item.channel;
+  option.textContent = item.channel;
+  channelFilter.append(option);
+});
+
+function selectedKpi() {
+  const selected = channelFilter.value;
+  if (selected === "all") return kpi;
+  const channel = channels.find(item => item.channel === selected);
+  return {
+    orders: channel.orders,
+    revenue: channel.revenue,
+    avgOrderValue: channel.revenue / channel.orders,
+    marginPct: kpi.marginPct,
+    receivables: kpi.receivables,
+    topCategory: kpi.topCategory
+  };
+}
+
+function renderKpis() {
+  const data = selectedKpi();
+  const cards = [
+    ["Выручка", formatRub(data.revenue)],
+    ["Заказы", formatNumber(data.orders)],
+    ["Средний чек", formatRub(data.avgOrderValue)],
+    ["Маржинальность", formatPct(data.marginPct)],
+    ["Дебиторская задолженность", formatRub(data.receivables)],
+    ["Топ-категория", data.topCategory]
+  ];
+  document.querySelector("#kpis").innerHTML = cards.map(([label, value]) => `
+    <article class="card">
+      <span>${label}</span>
+      <strong>${value}</strong>
+    </article>
+  `).join("");
+}
+
+function renderBars(target, rows, labelKey, valueKey, className = "") {
+  const max = Math.max(...rows.map(row => row[valueKey]));
+  document.querySelector(target).innerHTML = rows.map(row => `
+    <div class="bar-row" title="${row[labelKey]}">
+      <div class="bar-label">${row[labelKey]}</div>
+      <div class="track"><div class="bar ${className}" style="width:${row[valueKey] / max * 100}%"></div></div>
+      <div class="bar-value">${formatNumber(row[valueKey])}</div>
+    </div>
+  `).join("");
+}
+
+function renderLineChart() {
+  const svg = document.querySelector("#lineChart");
+  const width = 900;
+  const height = 260;
+  const pad = { left: 58, right: 24, top: 22, bottom: 42 };
+  const values = monthly.map(row => row.revenue);
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const x = index => pad.left + index * ((width - pad.left - pad.right) / (monthly.length - 1));
+  const y = value => pad.top + (max - value) * ((height - pad.top - pad.bottom) / (max - min));
+  const points = monthly.map((row, index) => `${x(index)},${y(row.revenue)}`).join(" ");
+  const circles = monthly.map((row, index) => `
+    <circle cx="${x(index)}" cy="${y(row.revenue)}" r="5" fill="var(--blue-dark)"></circle>
+    <text x="${x(index)}" y="${height - 14}" text-anchor="middle" font-size="13" fill="var(--muted)">${row.month.slice(5)}</text>
+    <text x="${x(index)}" y="${y(row.revenue) - 12}" text-anchor="middle" font-size="12" fill="#334155">${(row.revenue / 1000000).toFixed(1)}</text>
+  `).join("");
+  svg.innerHTML = `
+    <line x1="${pad.left}" y1="${height - pad.bottom}" x2="${width - pad.right}" y2="${height - pad.bottom}" stroke="var(--line)"></line>
+    <line x1="${pad.left}" y1="${pad.top}" x2="${pad.left}" y2="${height - pad.bottom}" stroke="var(--line)"></line>
+    <polyline points="${points}" fill="none" stroke="var(--blue-dark)" stroke-width="4" stroke-linejoin="round"></polyline>
+    ${circles}
+    <text x="18" y="34" font-size="12" fill="var(--muted)">млн ₽</text>
+  `;
+}
+
+function renderChannels() {
+  document.querySelector("#channelRows").innerHTML = channels.map(row => `
+    <tr>
+      <td>${row.channel}</td>
+      <td class="num">${formatNumber(row.orders)}</td>
+      <td class="num">${formatRub(row.revenue)}</td>
+      <td class="num">${formatRub(row.avgLineRevenue)}</td>
+      <td class="num">${row.rank}</td>
+    </tr>
+  `).join("");
+}
+
+function render() {
+  renderKpis();
+  renderBars("#categoryBars", categories, "category", "revenue");
+  renderBars("#debtBars", debts, "customer", "receivables", "debt");
+  renderLineChart();
+  renderChannels();
+}
+
+channelFilter.addEventListener("change", renderKpis);
+render();
+</script>
+</body>
+</html>

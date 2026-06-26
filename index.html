@@ -22,6 +22,7 @@
       --topbar-bg: rgba(247, 243, 236, 0.92);
       --lead: #39433f;
       --panel-soft: #f8f5ee;
+      --metric-bg: rgba(255, 253, 248, 0.68);
     }
 
     :root[data-theme="dark"] {
@@ -39,23 +40,7 @@
       --topbar-bg: rgba(21, 24, 22, 0.9);
       --lead: #d7ddd7;
       --panel-soft: #252b27;
-    }
-
-    :root[data-theme="clay"] {
-      --bg: #f7f1ed;
-      --paper: #fffaf6;
-      --ink: #2d2421;
-      --muted: #756863;
-      --line: #ddc9bf;
-      --teal: #9b574f;
-      --teal-dark: #74363c;
-      --coral: #c96f55;
-      --amber: #c68d2e;
-      --blue: #5d6f8c;
-      --shadow: 0 18px 50px rgba(69, 45, 37, 0.13);
-      --topbar-bg: rgba(247, 241, 237, 0.92);
-      --lead: #473d39;
-      --panel-soft: #fbf1eb;
+      --metric-bg: #202522;
     }
 
     * {
@@ -156,8 +141,34 @@
       transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.35s ease;
     }
 
+    .theme-switcher {
+      position: relative;
+      isolation: isolate;
+      width: 92px;
+      min-width: 92px;
+    }
+
+    .theme-switcher::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 4px;
+      z-index: 0;
+      width: calc((100% - 8px) / 2);
+      border-radius: 999px;
+      background: var(--ink);
+      box-shadow: 0 8px 18px rgba(25, 33, 31, 0.12);
+      transition: transform 0.28s ease, background 0.28s ease;
+    }
+
+    .theme-switcher.is-dark::before {
+      transform: translateX(100%);
+    }
+
     .switcher button {
       position: relative;
+      z-index: 1;
       min-width: 36px;
       min-height: 36px;
       padding: 6px 10px;
@@ -184,27 +195,22 @@
       box-shadow: 0 8px 18px rgba(25, 33, 31, 0.12);
     }
 
+    .theme-switcher button.is-active {
+      background: transparent;
+      box-shadow: none;
+    }
+
     [data-theme-choice] {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      justify-content: center;
+      gap: 0;
+      font-size: 18px;
+      line-height: 1;
     }
 
     [data-theme-choice]::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      border: 1px solid currentColor;
-      border-radius: 50%;
-      background: var(--teal);
-    }
-
-    [data-theme-choice="dark"]::before {
-      background: #202522;
-    }
-
-    [data-theme-choice="clay"]::before {
-      background: #c96f55;
+      display: none;
     }
 
     html.theme-shift body {
@@ -331,7 +337,11 @@
       padding: 18px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: rgba(255, 253, 248, 0.68);
+      background: var(--metric-bg);
+    }
+
+    :root[data-theme="dark"] .metric {
+      background: #202522;
     }
 
     .metric strong {
@@ -461,6 +471,34 @@
       margin-bottom: 0;
       color: var(--muted);
       font-size: 16px;
+    }
+
+    .hr-summary {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--line);
+    }
+
+    .summary-item {
+      padding: 18px;
+      background: var(--paper);
+    }
+
+    .summary-item b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--teal-dark);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .summary-item span {
+      color: var(--lead);
+      font-weight: 760;
     }
 
     .profile-band {
@@ -609,16 +647,44 @@
       color: var(--lead);
     }
 
+    .case-flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 2px 0 14px;
+    }
+
+    .case-step {
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+
+    .case-step b {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--teal-dark);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .case-step span {
+      color: var(--lead);
+      font-size: 12px;
+      font-weight: 720;
+    }
+
     .project-stats {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin: auto 0 18px;
+      gap: 8px;
+      margin: auto 0 14px;
     }
 
     .project-stat {
-      min-height: 74px;
-      padding: 12px;
+      min-height: 58px;
+      padding: 10px 12px;
       border-left: 3px solid var(--teal);
       background: var(--panel-soft);
     }
@@ -629,13 +695,13 @@
 
     .project-stat b {
       display: block;
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.1;
     }
 
     .project-stat span {
       color: var(--muted);
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 750;
     }
 
@@ -643,6 +709,54 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+    }
+
+    .file-preview {
+      margin: 0 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    .file-preview summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 44px;
+      padding: 10px 12px;
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 850;
+      list-style: none;
+    }
+
+    .file-preview summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .file-preview summary::after {
+      content: "+";
+      display: grid;
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--teal-dark);
+      transition: transform 0.2s ease;
+    }
+
+    .file-preview[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .file-preview ul {
+      margin: 0;
+      padding: 0 16px 14px 28px;
+      color: var(--lead);
+      font-size: 13px;
     }
 
     .text-link {
@@ -852,6 +966,7 @@
       }
 
       .section-head,
+      .hr-summary,
       .profile-band,
       .projects,
       .experience,
@@ -947,7 +1062,8 @@
       }
 
       .visual-top,
-      .project-stats {
+      .project-stats,
+      .case-flow {
         grid-template-columns: 1fr;
       }
 
@@ -1026,10 +1142,9 @@
           <button type="button" data-language="ru" class="is-active">RU</button>
           <button type="button" data-language="en">EN</button>
         </div>
-        <div class="switcher" aria-label="Переключение темы">
-          <button type="button" data-theme-choice="sage" class="is-active" data-i18n="themeSage">База</button>
-          <button type="button" data-theme-choice="dark" data-i18n="themeDark">Темная</button>
-          <button type="button" data-theme-choice="clay" data-i18n="themeClay">Теплая</button>
+        <div class="switcher theme-switcher" aria-label="Переключение темы">
+          <button type="button" data-theme-choice="sage" class="is-active" aria-label="Светлая тема" title="Светлая тема">☀</button>
+          <button type="button" data-theme-choice="dark" aria-label="Темная тема" title="Темная тема">☾</button>
         </div>
       </div>
     </div>
@@ -1040,26 +1155,27 @@
       <div class="shell hero-grid">
         <div class="hero-copy">
           <p class="eyebrow" data-i18n="heroEyebrow">Analyst / 1С / Business Processes / BI</p>
-          <h1 data-i18n="heroTitle">Аналитик для данных, процессов и отчетности.</h1>
+          <h1 data-i18n="heroTitle">Аналитик: данные, процессы и понятная отчетность.</h1>
           <p class="lead" data-i18n="heroLead">Работаю на стыке отчетности, 1С, бизнес-процессов и управленческой аналитики: структурирую данные, описываю требования, проверяю качество выгрузок и собираю понятные артефакты для бизнеса и команды разработки.</p>
           <div class="actions">
             <a class="button primary" href="#projects" data-i18n="heroProjects">Смотреть проекты</a>
-            <a class="button secondary" href="https://github.com/comfe2436-web/analytics-portfolio" target="_blank" rel="noreferrer" data-i18n="heroGithub">GitHub портфолио</a>
+            <a class="button secondary" href="https://comfe2436-web.github.io/" target="_blank" rel="noreferrer" data-i18n="heroPortfolio">Портфолио online</a>
+            <a class="button secondary" href="https://github.com/comfe2436-web" target="_blank" rel="noreferrer" data-i18n="heroGithub">GitHub профиль</a>
             <a class="button secondary" href="output/pdf/druzhinskaya-ekaterina-resume.pdf" target="_blank" data-i18n="heroPdf">Резюме PDF</a>
             <a class="button secondary" href="#contact" data-i18n="heroContact">Связаться</a>
           </div>
           <div class="hero-metrics" aria-label="Ключевые показатели портфолио">
             <div class="metric">
-              <strong>4</strong>
-              <span data-i18n="metricProjects">законченных аналитических кейса</span>
+              <strong>326</strong>
+              <span data-i18n="metricProjects">записей проверено в кейсе качества данных 1С</span>
             </div>
             <div class="metric">
-              <strong data-i18n="metricYears">4+ года</strong>
-              <span data-i18n="metricExperience">работа с данными, документами и процессами</span>
+              <strong data-i18n="metricYears">5 таблиц</strong>
+              <span data-i18n="metricExperience">SQL-модель продаж с KPI и BI-прототипом</span>
             </div>
             <div class="metric">
-              <strong data-i18n="metricStack">Excel + 1С</strong>
-              <span data-i18n="metricTools">отчетность, проверки данных и автоматизация</span>
+              <strong data-i18n="metricStack">BPMN + RTM</strong>
+              <span data-i18n="metricTools">пакет требований для автоматизации 1С</span>
             </div>
           </div>
         </div>
@@ -1087,12 +1203,43 @@
           </div>
           <div class="visual-main">
             <div class="dashboard-shot">
-              <img src="portfolio-projects/03-sales-feedback-python-analytics/screenshots/00_executive_dashboard.svg" alt="Управленческий дашборд проекта Customer Feedback & Sales Analytics">
+              <img src="portfolio-projects/03-sales-feedback-python-analytics/screenshots/00_executive_dashboard.png" alt="Управленческий дашборд проекта Customer Feedback & Sales Analytics">
               <div class="caption">
                 <span data-i18n="heroShotTitle">Аналитика продаж и клиентской обратной связи</span>
                 <span data-i18n="heroShotMeta">Python / pandas / управленческие выводы</span>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary">
+      <div class="shell">
+        <div class="section-head">
+          <h2 data-i18n="hrSummaryTitle">Коротко для HR</h2>
+          <p data-i18n="hrSummaryLead">Пять строк, которые помогают быстро понять профиль, стек и подход к задачам.</p>
+        </div>
+        <div class="hr-summary">
+          <div class="summary-item">
+            <b data-i18n="hrRoleLabel">Роль</b>
+            <span data-i18n="hrRoleText">Аналитик данных, процессов и отчетности</span>
+          </div>
+          <div class="summary-item">
+            <b data-i18n="hrStackLabel">Стек</b>
+            <span data-i18n="hrStackText">Excel, 1С, SQL, Python, BPMN, BI</span>
+          </div>
+          <div class="summary-item">
+            <b data-i18n="hrFormatLabel">Формат</b>
+            <span data-i18n="hrFormatText">Удаленно / гибрид, готова к командировкам</span>
+          </div>
+          <div class="summary-item">
+            <b data-i18n="hrStrengthLabel">Сильная сторона</b>
+            <span data-i18n="hrStrengthText">Связываю данные, процессы и понятные артефакты</span>
+          </div>
+          <div class="summary-item">
+            <b data-i18n="hrTargetLabel">Интересны задачи</b>
+            <span data-i18n="hrTargetText">Отчетность, качество данных, 1С и бизнес-анализ</span>
           </div>
         </div>
       </div>
@@ -1156,6 +1303,20 @@
               <div class="project-kicker" data-i18n="project1Kicker">Excel / выгрузки 1С / качество данных</div>
               <h3 data-i18n="project1Title">Контроль качества выгрузок из 1С</h3>
               <p data-i18n="project1Text">Контроль качества выгрузок из 1С: дубли, пропуски, связи между таблицами, некорректные суммы, статусы и даты. Итог - формульный Excel-отчет, реестр ошибок и план исправлений.</p>
+              <div class="case-flow">
+                <div class="case-step">
+                  <b data-i18n="caseProblem">Проблема</b>
+                  <span data-i18n="project1Problem">Выгрузки из 1С сложно быстро проверить перед отчетом.</span>
+                </div>
+                <div class="case-step">
+                  <b data-i18n="caseAction">Действие</b>
+                  <span data-i18n="project1Action">Собрала проверки дублей, пропусков, сумм и связей.</span>
+                </div>
+                <div class="case-step">
+                  <b data-i18n="caseResult">Результат</b>
+                  <span data-i18n="project1Result">Получился Excel-отчет с реестром ошибок и планом исправлений.</span>
+                </div>
+              </div>
               <div class="project-stats">
                 <div class="project-stat">
                   <b>326</b>
@@ -1166,6 +1327,15 @@
                   <span data-i18n="project1Stat2">ошибки вынесены в реестр качества</span>
                 </div>
               </div>
+              <details class="file-preview">
+                <summary data-i18n="project1PreviewTitle">Что внутри Excel-отчета</summary>
+                <ul>
+                  <li data-i18n="project1Preview1">Сводка по качеству данных</li>
+                  <li data-i18n="project1Preview2">Реестр ошибок по строкам</li>
+                  <li data-i18n="project1Preview3">Формулы проверок и контрольные статусы</li>
+                  <li data-i18n="project1Preview4">План исправлений для владельца процесса</li>
+                </ul>
+              </details>
               <div class="project-links">
                 <a class="text-link" href="https://github.com/comfe2436-web/data-quality-control-1c-exports" target="_blank" rel="noreferrer">GitHub</a>
                 <a class="text-link" href="https://github.com/comfe2436-web/data-quality-control-1c-exports/blob/main/README.md" target="_blank" rel="noreferrer">README</a>
@@ -1177,12 +1347,26 @@
 
           <article class="project" data-tags="business">
             <div class="project-media">
-              <img src="portfolio-projects/02-bpmn-1c-requirements/03-bpmn/to-be.svg" alt="TO-BE BPMN процесс обработки заявок">
+              <img src="portfolio-projects/02-bpmn-1c-requirements/03-bpmn/to-be.png" alt="TO-BE BPMN процесс обработки заявок">
             </div>
             <div class="project-body">
               <div class="project-kicker" data-i18n="project2Kicker">BPMN / 1С / требования</div>
               <h3 data-i18n="project2Title">Автоматизация обработки заявок в 1С</h3>
               <p data-i18n="project2Text">Автоматизация обработки клиентских заявок в 1С: AS-IS, анализ первопричин, TO-BE, требования, RTM, макет формы, ТЗ, критерии приемки и тестовые сценарии.</p>
+              <div class="case-flow">
+                <div class="case-step">
+                  <b data-i18n="caseProblem">Проблема</b>
+                  <span data-i18n="project2Problem">Заявки обрабатывались вручную и теряли прозрачность статусов.</span>
+                </div>
+                <div class="case-step">
+                  <b data-i18n="caseAction">Действие</b>
+                  <span data-i18n="project2Action">Описала AS-IS/TO-BE, требования, RTM и критерии приемки.</span>
+                </div>
+                <div class="case-step">
+                  <b data-i18n="caseResult">Результат</b>
+                  <span data-i18n="project2Result">Получился набор артефактов для постановки задачи в разработку.</span>
+                </div>
+              </div>
               <div class="project-stats">
                 <div class="project-stat">
                   <b>200</b>
@@ -1193,6 +1377,15 @@
                   <span data-i18n="project2Stat2">занимала обработка до автоматизации</span>
                 </div>
               </div>
+              <details class="file-preview">
+                <summary data-i18n="project2PreviewTitle">Что внутри ТЗ и RTM</summary>
+                <ul>
+                  <li data-i18n="project2Preview1">Цели, границы и роли процесса</li>
+                  <li data-i18n="project2Preview2">Функциональные требования к 1С</li>
+                  <li data-i18n="project2Preview3">Матрица трассировки требований</li>
+                  <li data-i18n="project2Preview4">Критерии приемки и тестовые сценарии</li>
+                </ul>
+              </details>
               <div class="project-links">
                 <a class="text-link" href="https://github.com/comfe2436-web/1c-order-processing-automation" target="_blank" rel="noreferrer">GitHub</a>
                 <a class="text-link" href="https://github.com/comfe2436-web/1c-order-processing-automation/blob/main/README.md" target="_blank" rel="noreferrer">README</a>
@@ -1204,12 +1397,26 @@
 
           <article class="project" data-tags="data bi">
             <div class="project-media">
-              <img src="portfolio-projects/03-sales-feedback-python-analytics/screenshots/04_priority_matrix.svg" alt="Матрица приоритетов по продуктам и обратной связи">
+              <img src="portfolio-projects/03-sales-feedback-python-analytics/screenshots/04_priority_matrix.png" alt="Матрица приоритетов по продуктам и обратной связи">
             </div>
             <div class="project-body">
               <div class="project-kicker" data-i18n="project3Kicker">Python / pandas / клиентский опыт</div>
               <h3 data-i18n="project3Title">Аналитика продаж и клиентской обратной связи</h3>
               <p data-i18n="project3Text">Исследование продаж и клиентской обратной связи: очистка данных, расчет NPS и операционных метрик, проверка гипотез, поиск проблемных категорий и рекомендаций для отдела продаж.</p>
+              <div class="case-flow">
+                <div class="case-step">
+                  <b data-i18n="caseProblem">Проблема</b>
+                  <span data-i18n="project3Problem">Продажи и обратная связь были разрознены по разным признакам.</span>
+                </div>
+                <div class="case-step">
+                  <b data-i18n="caseAction">Действие</b>
+                  <span data-i18n="project3Action">Очистила данные, посчитала метрики и проверила гипотезы.</span>
+                </div>
+                <div class="case-step">
+                  <b data-i18n="caseResult">Результат</b>
+                  <span data-i18n="project3Result">Выделила проблемные категории и приоритеты для продаж.</span>
+                </div>
+              </div>
               <div class="project-stats">
                 <div class="project-stat">
                   <b>4 995</b>
@@ -1217,9 +1424,18 @@
                 </div>
                 <div class="project-stat">
                   <b>635,5 млн</b>
-                  <span data-i18n="project3Stat2">рублей выручки в синтетической модели</span>
+                  <span data-i18n="project3Stat2">рублей выручки в аналитической модели</span>
                 </div>
               </div>
+              <details class="file-preview">
+                <summary data-i18n="project3PreviewTitle">Что внутри ноутбука</summary>
+                <ul>
+                  <li data-i18n="project3Preview1">Очистка и подготовка таблицы</li>
+                  <li data-i18n="project3Preview2">NPS, рейтинг и операционные метрики</li>
+                  <li data-i18n="project3Preview3">Графики по продуктам и месяцам</li>
+                  <li data-i18n="project3Preview4">Матрица приоритетов и рекомендации</li>
+                </ul>
+              </details>
               <div class="project-links">
                 <a class="text-link" href="https://github.com/comfe2436-web/customer-feedback-sales-analytics" target="_blank" rel="noreferrer">GitHub</a>
                 <a class="text-link" href="https://github.com/comfe2436-web/customer-feedback-sales-analytics/blob/main/README.md" target="_blank" rel="noreferrer">README</a>
@@ -1231,12 +1447,26 @@
 
           <article class="project" data-tags="bi data">
             <div class="project-media">
-              <img src="portfolio-projects/04-sql-bi-dashboard/screenshots/dashboard.svg" alt="SQL и BI дашборд продаж">
+              <img src="portfolio-projects/04-sql-bi-dashboard/screenshots/dashboard.png" alt="SQL и BI дашборд продаж">
             </div>
             <div class="project-body">
               <div class="project-kicker" data-i18n="project4Kicker">SQL / SQLite / BI-дашборд</div>
               <h3 data-i18n="project4Title">SQL-анализ продаж и BI-дашборд</h3>
               <p data-i18n="project4Text">SQL-анализ продаж интернет-магазина: модель данных, SQLite-база, JOIN, CTE, агрегации, KPI по выручке, маржинальности и дебиторской задолженности, BI-спецификация.</p>
+              <div class="case-flow">
+                <div class="case-step">
+                  <b data-i18n="caseProblem">Проблема</b>
+                  <span data-i18n="project4Problem">Нужна единая витрина продаж и понятные KPI для дашборда.</span>
+                </div>
+                <div class="case-step">
+                  <b data-i18n="caseAction">Действие</b>
+                  <span data-i18n="project4Action">Собрала модель данных, SQL-запросы и BI-спецификацию.</span>
+                </div>
+                <div class="case-step">
+                  <b data-i18n="caseResult">Результат</b>
+                  <span data-i18n="project4Result">Получился прототип дашборда с KPI и выгрузками.</span>
+                </div>
+              </div>
               <div class="project-stats">
                 <div class="project-stat">
                   <b>1 660</b>
@@ -1247,6 +1477,15 @@
                   <span data-i18n="project4Stat2">рублей выручки в BI-датасете</span>
                 </div>
               </div>
+              <details class="file-preview">
+                <summary data-i18n="project4PreviewTitle">Что внутри SQL-проекта</summary>
+                <ul>
+                  <li data-i18n="project4Preview1">Схема SQLite и загрузка данных</li>
+                  <li data-i18n="project4Preview2">JOIN, CTE и агрегирующие запросы</li>
+                  <li data-i18n="project4Preview3">KPI по выручке, марже и дебиторке</li>
+                  <li data-i18n="project4Preview4">BI-прототип и спецификация дашборда</li>
+                </ul>
+              </details>
               <div class="project-links">
                 <a class="text-link" href="https://github.com/comfe2436-web/sales-performance-sql-bi-dashboard" target="_blank" rel="noreferrer">GitHub</a>
                 <a class="text-link" href="https://github.com/comfe2436-web/sales-performance-sql-bi-dashboard/blob/main/README.md" target="_blank" rel="noreferrer">README</a>
@@ -1263,12 +1502,11 @@
     <section id="resume">
       <div class="shell">
         <div class="section-head">
-          <h2 data-i18n="resumeTitle">Резюме</h2>
+          <h2 data-i18n="resumeTitle">Опыт</h2>
           <p data-i18n="resumeLead">Короткая версия для рекрутера: актуальный опыт, стек, образование и формат работы. Проекты выше показывают, как эти навыки выглядят в артефактах.</p>
         </div>
         <div class="resume-actions">
           <a class="button primary" href="output/pdf/druzhinskaya-ekaterina-resume.pdf" target="_blank" data-i18n="resumePdf">Просмотреть или скачать PDF</a>
-          <a class="button secondary" href="#contact" data-i18n="resumeContact">Связаться</a>
         </div>
         <div class="experience">
           <aside class="resume-card">
@@ -1319,7 +1557,6 @@
       <div class="shell">
         <div class="quote-band">
           <p data-i18n="quoteText">Мне близка аналитика, в которой результат можно открыть, проверить и использовать: таблица считает, требования объясняют задачу, BPMN показывает процесс, а отчет помогает принять решение.</p>
-          <span data-i18n="quoteMeta">Проекты построены на синтетических данных и оформлены как рабочие материалы для внутренних бизнес-задач.</span>
         </div>
       </div>
     </section>
@@ -1344,7 +1581,7 @@
 
   <footer>
     <div class="shell">
-      <span data-i18n="footerText">© 2026 Екатерина Дружинская. Портфолио построено на синтетических данных.</span>
+      <span data-i18n="footerText">© 2026 Екатерина Дружинская. Аналитическое портфолио и резюме.</span>
     </div>
   </footer>
 
@@ -1355,26 +1592,38 @@
         description: "Резюме Екатерины Дружинской: аналитик, 1С, бизнес-анализ, BI, SQL, Python, Excel и портфолио аналитических проектов.",
         navProfile: "Профиль",
         navProjects: "Проекты",
-        navResume: "Резюме",
+        navResume: "Опыт",
         navContact: "Контакты",
-        themeSage: "База",
+        themeSage: "Светлая",
         themeDark: "Темная",
-        themeClay: "Теплая",
         heroEyebrow: "Analyst / 1С / Business Processes / BI",
-        heroTitle: "Аналитик для данных, процессов и отчетности.",
+        heroTitle: "Аналитик: данные, процессы и понятная отчетность.",
         heroLead: "Работаю на стыке отчетности, 1С, бизнес-процессов и управленческой аналитики: структурирую данные, описываю требования, проверяю качество выгрузок и собираю понятные артефакты для бизнеса и команды разработки.",
         heroProjects: "Смотреть проекты",
-        heroGithub: "GitHub портфолио",
+        heroPortfolio: "Портфолио online",
+        heroGithub: "GitHub профиль",
         heroPdf: "Резюме PDF",
         heroContact: "Связаться",
-        metricProjects: "законченных аналитических кейса",
-        metricYears: "4+ года",
-        metricExperience: "работа с данными, документами и процессами",
-        metricStack: "Excel + 1С",
-        metricTools: "отчетность, проверки данных и автоматизация",
+        metricProjects: "записей проверено в кейсе качества данных 1С",
+        metricYears: "5 таблиц",
+        metricExperience: "SQL-модель продаж с KPI и BI-прототипом",
+        metricStack: "BPMN + RTM",
+        metricTools: "пакет требований для автоматизации 1С",
         visual1c: "1С",
         heroShotTitle: "Аналитика продаж и клиентской обратной связи",
         heroShotMeta: "Python / pandas / управленческие выводы",
+        hrSummaryTitle: "Коротко для HR",
+        hrSummaryLead: "Пять строк, которые помогают быстро понять профиль, стек и подход к задачам.",
+        hrRoleLabel: "Роль",
+        hrRoleText: "Аналитик данных, процессов и отчетности",
+        hrStackLabel: "Стек",
+        hrStackText: "Excel, 1С, SQL, Python, BPMN, BI",
+        hrFormatLabel: "Формат",
+        hrFormatText: "Удаленно / гибрид, готова к командировкам",
+        hrStrengthLabel: "Сильная сторона",
+        hrStrengthText: "Связываю данные, процессы и понятные артефакты",
+        hrTargetLabel: "Интересны задачи",
+        hrTargetText: "Отчетность, качество данных, 1С и бизнес-анализ",
         profileTitle: "Профиль",
         profileLead: "Портфолио показывает полный аналитический цикл: понять задачу, описать процесс, проверить данные, подготовить отчетность и сформулировать решение для руководителя или команды разработки.",
         profileWorkTitle: "Что делаю",
@@ -1393,36 +1642,70 @@
         project1Kicker: "Excel / выгрузки 1С / качество данных",
         project1Title: "Контроль качества выгрузок из 1С",
         project1Text: "Контроль качества выгрузок из 1С: дубли, пропуски, связи между таблицами, некорректные суммы, статусы и даты. Итог - формульный Excel-отчет, реестр ошибок и план исправлений.",
+        caseProblem: "Проблема",
+        caseAction: "Действие",
+        caseResult: "Результат",
+        project1Problem: "Выгрузки из 1С сложно быстро проверить перед отчетом.",
+        project1Action: "Собрала проверки дублей, пропусков, сумм и связей.",
+        project1Result: "Получился Excel-отчет с реестром ошибок и планом исправлений.",
         project1Stat1: "строк проверено в демо-выгрузке",
         project1Stat2: "ошибки вынесены в реестр качества",
+        project1PreviewTitle: "Что внутри Excel-отчета",
+        project1Preview1: "Сводка по качеству данных",
+        project1Preview2: "Реестр ошибок по строкам",
+        project1Preview3: "Формулы проверок и контрольные статусы",
+        project1Preview4: "План исправлений для владельца процесса",
         project1Artifact: "Скачать Excel-отчет",
         project1Dataset: "Открыть Excel-выгрузку",
         project2Kicker: "BPMN / 1С / требования",
         project2Title: "Автоматизация обработки заявок в 1С",
         project2Text: "Автоматизация обработки клиентских заявок в 1С: AS-IS, анализ первопричин, TO-BE, требования, RTM, макет формы, ТЗ, критерии приемки и тестовые сценарии.",
+        project2Problem: "Заявки обрабатывались вручную и теряли прозрачность статусов.",
+        project2Action: "Описала AS-IS/TO-BE, требования, RTM и критерии приемки.",
+        project2Result: "Получился набор артефактов для постановки задачи в разработку.",
         project2Stat1: "заявок в день в описанном процессе",
         project2Stat2: "занимала обработка до автоматизации",
+        project2PreviewTitle: "Что внутри ТЗ и RTM",
+        project2Preview1: "Цели, границы и роли процесса",
+        project2Preview2: "Функциональные требования к 1С",
+        project2Preview3: "Матрица трассировки требований",
+        project2Preview4: "Критерии приемки и тестовые сценарии",
         project2Artifact: "ТЗ",
         project2Matrix: "Матрица требований",
         project3Kicker: "Python / pandas / клиентский опыт",
         project3Title: "Аналитика продаж и клиентской обратной связи",
         project3Text: "Исследование продаж и клиентской обратной связи: очистка данных, расчет NPS и операционных метрик, проверка гипотез, поиск проблемных категорий и рекомендаций для отдела продаж.",
+        project3Problem: "Продажи и обратная связь были разрознены по разным признакам.",
+        project3Action: "Очистила данные, посчитала метрики и проверила гипотезы.",
+        project3Result: "Выделила проблемные категории и приоритеты для продаж.",
         project3Stat1: "строк продаж и отзывов в датасете",
-        project3Stat2: "рублей выручки в синтетической модели",
+        project3Stat2: "рублей выручки в аналитической модели",
+        project3PreviewTitle: "Что внутри ноутбука",
+        project3Preview1: "Очистка и подготовка таблицы",
+        project3Preview2: "NPS, рейтинг и операционные метрики",
+        project3Preview3: "Графики по продуктам и месяцам",
+        project3Preview4: "Матрица приоритетов и рекомендации",
         project3Artifact: "Ноутбук",
         project3Dataset: "Скачать CSV-выгрузку",
         project4Kicker: "SQL / SQLite / BI-дашборд",
         project4Title: "SQL-анализ продаж и BI-дашборд",
         project4Text: "SQL-анализ продаж интернет-магазина: модель данных, SQLite-база, JOIN, CTE, агрегации, KPI по выручке, маржинальности и дебиторской задолженности, BI-спецификация.",
+        project4Problem: "Нужна единая витрина продаж и понятные KPI для дашборда.",
+        project4Action: "Собрала модель данных, SQL-запросы и BI-спецификацию.",
+        project4Result: "Получился прототип дашборда с KPI и выгрузками.",
         project4Stat1: "заказов в SQL-модели продаж",
         project4Stat2: "рублей выручки в BI-датасете",
+        project4PreviewTitle: "Что внутри SQL-проекта",
+        project4Preview1: "Схема SQLite и загрузка данных",
+        project4Preview2: "JOIN, CTE и агрегирующие запросы",
+        project4Preview3: "KPI по выручке, марже и дебиторке",
+        project4Preview4: "BI-прототип и спецификация дашборда",
         project4Artifact: "BI-прототип",
         project4Dataset: "Скачать KPI CSV",
         project4Database: "SQLite-база",
-        resumeTitle: "Резюме",
-        resumeLead: "Короткая версия для рекрутера: актуальный опыт, стек, образование и формат работы. Проекты выше показывают, как эти навыки выглядят в артефактах.",
+        resumeTitle: "Опыт",
+        resumeLead: "Короткая версия для рекрутера: актуальные роли, стек, образование и формат работы. Проекты выше показывают, как эти навыки выглядят в артефактах.",
         resumePdf: "Просмотреть или скачать PDF",
-        resumeContact: "Связаться",
         stackTitle: "Стек и формат",
         stack1: "Excel: формулы, ВПР / XLOOKUP, сводные таблицы, макросы",
         stack2: "1С: выгрузка, проверка и подготовка данных",
@@ -1442,37 +1725,48 @@
         educationTitle: "МФЮА · РЭУ им. Г.В. Плеханова",
         educationText: "Магистратура по юриспруденции, правовое обеспечение бизнеса, 2025-2028. Бакалавриат по менеджменту, управление гостиничным и туристическим бизнесом, 2021-2025. Курс: разработка алгоритмов и программных приложений.",
         quoteText: "Мне близка аналитика, в которой результат можно открыть, проверить и использовать: таблица считает, требования объясняют задачу, BPMN показывает процесс, а отчет помогает принять решение.",
-        quoteMeta: "Проекты построены на синтетических данных и оформлены как рабочие материалы для внутренних бизнес-задач.",
         contactTitle: "Контакты",
         contactText: "Открыта к задачам в аналитике, 1С, бизнес-анализе, BI и автоматизации отчетности. Репозиторий можно смотреть как портфолио с готовыми артефактами и демонстрационными материалами.",
         phoneButton: "Телефон",
-        footerText: "© 2026 Екатерина Дружинская. Портфолио построено на синтетических данных."
+        footerText: "© 2026 Екатерина Дружинская. Аналитическое портфолио и резюме."
       },
       en: {
         pageTitle: "Druzhinskaya Ekaterina / Екатерина Дружинская · resume",
         description: "Resume of Ekaterina Druzhinskaya: analyst, 1C, business analysis, BI, SQL, Python, Excel and analytical project portfolio.",
         navProfile: "Profile",
         navProjects: "Projects",
-        navResume: "Resume",
+        navResume: "Experience",
         navContact: "Contacts",
-        themeSage: "Base",
+        themeSage: "Light",
         themeDark: "Dark",
-        themeClay: "Warm",
         heroEyebrow: "Analyst / 1C / Business Processes / BI",
-        heroTitle: "Analyst for data, processes and reporting.",
+        heroTitle: "Analyst: data, processes and clear reporting.",
         heroLead: "I work at the intersection of reporting, 1C, business processes and management analytics: structuring data, describing requirements, checking export quality and preparing clear artifacts for business and development teams.",
         heroProjects: "View projects",
-        heroGithub: "GitHub portfolio",
+        heroPortfolio: "Online portfolio",
+        heroGithub: "GitHub profile",
         heroPdf: "Resume PDF",
         heroContact: "Contact",
-        metricProjects: "completed analytical cases",
-        metricYears: "4+ years",
-        metricExperience: "working with data, documents and processes",
-        metricStack: "Excel + 1C",
-        metricTools: "reporting, data checks and automation",
+        metricProjects: "records checked in the 1C data quality case",
+        metricYears: "5 tables",
+        metricExperience: "SQL sales model with KPIs and BI prototype",
+        metricStack: "BPMN + RTM",
+        metricTools: "requirements package for 1C automation",
         visual1c: "1C",
         heroShotTitle: "Sales and customer feedback analytics",
         heroShotMeta: "Python / pandas / management insights",
+        hrSummaryTitle: "HR summary",
+        hrSummaryLead: "A five-line snapshot for role, stack, format and task fit.",
+        hrRoleLabel: "Role",
+        hrRoleText: "Data, process and reporting analyst",
+        hrStackLabel: "Stack",
+        hrStackText: "Excel, 1C, SQL, Python, BPMN, BI",
+        hrFormatLabel: "Format",
+        hrFormatText: "Remote / hybrid, open to business trips",
+        hrStrengthLabel: "Strength",
+        hrStrengthText: "Connects data, processes and clear artifacts",
+        hrTargetLabel: "Interested in",
+        hrTargetText: "Reporting, data quality, 1C and business analysis",
         profileTitle: "Profile",
         profileLead: "The portfolio shows a full analytical cycle: understand the task, describe the process, validate data, prepare reporting and formulate a solution for management or the development team.",
         profileWorkTitle: "What I do",
@@ -1491,36 +1785,70 @@
         project1Kicker: "Excel / 1C exports / data quality",
         project1Title: "1C Export Data Quality Control",
         project1Text: "Quality control for 1C exports: duplicates, missing values, table relationships, incorrect amounts, statuses and dates. Output: formula-based Excel report, error register and action plan.",
+        caseProblem: "Problem",
+        caseAction: "Action",
+        caseResult: "Result",
+        project1Problem: "1C exports were hard to validate quickly before reporting.",
+        project1Action: "Built checks for duplicates, gaps, amounts and table links.",
+        project1Result: "Created an Excel report with an error register and action plan.",
         project1Stat1: "rows checked in the demo export",
         project1Stat2: "issues moved into the quality register",
+        project1PreviewTitle: "Inside the Excel report",
+        project1Preview1: "Data quality summary",
+        project1Preview2: "Row-level error register",
+        project1Preview3: "Check formulas and control statuses",
+        project1Preview4: "Action plan for the process owner",
         project1Artifact: "Download Excel report",
         project1Dataset: "Open Excel export",
         project2Kicker: "BPMN / 1C / requirements",
         project2Title: "1C Order Processing Automation",
         project2Text: "Automation of customer request processing in 1C: AS-IS, root-cause analysis, TO-BE, requirements, RTM, form mockup, specification, acceptance criteria and test scenarios.",
+        project2Problem: "Requests were processed manually and status transparency was weak.",
+        project2Action: "Mapped AS-IS/TO-BE, requirements, RTM and acceptance criteria.",
+        project2Result: "Prepared a set of artifacts for development handoff.",
         project2Stat1: "requests per day in the described process",
         project2Stat2: "processing time before automation",
+        project2PreviewTitle: "Inside the spec and RTM",
+        project2Preview1: "Goals, scope and process roles",
+        project2Preview2: "Functional requirements for 1C",
+        project2Preview3: "Requirements traceability matrix",
+        project2Preview4: "Acceptance criteria and test scenarios",
         project2Artifact: "Specification",
         project2Matrix: "Requirements matrix",
         project3Kicker: "Python / pandas / customer experience",
         project3Title: "Sales and Customer Feedback Analytics",
         project3Text: "Analysis of sales and customer feedback: data cleaning, NPS and operational metrics, hypothesis checks, problematic categories and recommendations for sales management.",
+        project3Problem: "Sales and feedback were fragmented across different signals.",
+        project3Action: "Cleaned the data, calculated metrics and tested hypotheses.",
+        project3Result: "Identified problematic categories and sales priorities.",
         project3Stat1: "sales and feedback rows in the dataset",
-        project3Stat2: "RUB revenue in the synthetic model",
+        project3Stat2: "RUB revenue in the analytical model",
+        project3PreviewTitle: "Inside the notebook",
+        project3Preview1: "Table cleaning and preparation",
+        project3Preview2: "NPS, rating and operational metrics",
+        project3Preview3: "Charts by products and months",
+        project3Preview4: "Priority matrix and recommendations",
         project3Artifact: "Notebook",
         project3Dataset: "Download CSV export",
         project4Kicker: "SQL / SQLite / BI dashboard",
         project4Title: "SQL Sales Analysis and BI Dashboard",
         project4Text: "SQL sales analysis for an online store: data model, SQLite database, JOIN, CTE, aggregations, revenue, margin and receivables KPIs, and BI specification.",
+        project4Problem: "The team needed a single sales mart and clear dashboard KPIs.",
+        project4Action: "Built the data model, SQL queries and BI specification.",
+        project4Result: "Delivered a dashboard prototype with KPIs and exports.",
         project4Stat1: "orders in the SQL sales model",
         project4Stat2: "RUB revenue in the BI dataset",
+        project4PreviewTitle: "Inside the SQL project",
+        project4Preview1: "SQLite schema and data loading",
+        project4Preview2: "JOIN, CTE and aggregation queries",
+        project4Preview3: "Revenue, margin and receivables KPIs",
+        project4Preview4: "BI prototype and dashboard specification",
         project4Artifact: "BI prototype",
         project4Dataset: "Download KPI CSV",
         project4Database: "SQLite database",
-        resumeTitle: "Resume",
-        resumeLead: "A short recruiter version: current experience, stack, education and work format. The projects above show how these skills look in real artifacts.",
+        resumeTitle: "Experience",
+        resumeLead: "A short recruiter version: current roles, stack, education and work format. The projects above show how these skills look in real artifacts.",
         resumePdf: "View or download PDF",
-        resumeContact: "Contact",
         stackTitle: "Stack and format",
         stack1: "Excel: formulas, VLOOKUP / XLOOKUP, pivot tables, macros",
         stack2: "1C: data export, validation and preparation",
@@ -1540,17 +1868,17 @@
         educationTitle: "MFUA · Plekhanov Russian University of Economics",
         educationText: "Master's degree in law, legal support for business, 2025-2028. Bachelor's degree in management, hospitality and tourism business management, 2021-2025. Course: algorithm and application development.",
         quoteText: "I like analytics where the result can be opened, checked and used: a spreadsheet calculates, requirements explain the task, BPMN shows the process, and a report supports a decision.",
-        quoteMeta: "Projects use synthetic data and are structured as working materials for internal business tasks.",
         contactTitle: "Contacts",
         contactText: "Open to tasks in analytics, 1C, business analysis, BI and reporting automation. The repository can be viewed as a portfolio with ready artifacts and demo materials.",
         phoneButton: "Phone",
-        footerText: "© 2026 Ekaterina Druzhinskaya. Portfolio built on synthetic data."
+        footerText: "© 2026 Ekaterina Druzhinskaya. Analytical portfolio and resume."
       }
     };
 
     const root = document.documentElement;
     const languageButtons = document.querySelectorAll("[data-language]");
     const themeButtons = document.querySelectorAll("[data-theme-choice]");
+    const themeSwitcher = document.querySelector(".theme-switcher");
     const descriptionMeta = document.querySelector('meta[name="description"]');
 
     function applyLanguage(language) {
@@ -1574,20 +1902,22 @@
     }
 
     function applyTheme(theme) {
-      if (theme === "sage") {
+      const selectedTheme = theme === "dark" ? "dark" : "sage";
+      if (selectedTheme === "sage") {
         root.removeAttribute("data-theme");
       } else {
-        root.dataset.theme = theme;
+        root.dataset.theme = selectedTheme;
       }
 
       themeButtons.forEach((button) => {
-        button.classList.toggle("is-active", button.dataset.themeChoice === theme);
-        button.setAttribute("aria-pressed", String(button.dataset.themeChoice === theme));
+        button.classList.toggle("is-active", button.dataset.themeChoice === selectedTheme);
+        button.setAttribute("aria-pressed", String(button.dataset.themeChoice === selectedTheme));
       });
+      themeSwitcher.classList.toggle("is-dark", selectedTheme === "dark");
       root.classList.remove("theme-shift");
       void root.offsetWidth;
       root.classList.add("theme-shift");
-      localStorage.setItem("portfolio-theme", theme);
+      localStorage.setItem("portfolio-theme", selectedTheme);
     }
 
     languageButtons.forEach((button) => {
