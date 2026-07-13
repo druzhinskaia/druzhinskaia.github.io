@@ -827,6 +827,35 @@
       margin-bottom: 9px;
     }
 
+    .recommendation-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 24px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    .recommendation-card h3 {
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+
+    .recommendation-card p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .recommendation-meta {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
     .timeline {
       padding: 8px 24px 24px;
     }
@@ -985,6 +1014,10 @@
       .contact {
         align-items: start;
       }
+
+      .recommendation-card {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 620px) {
@@ -1009,11 +1042,11 @@
 
       .nav-links {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(0, 1fr));
         gap: 4px;
         overflow: visible;
         padding-bottom: 0;
-        font-size: 13px;
+        font-size: 10px;
       }
 
       .nav-links a {
@@ -1055,6 +1088,10 @@
 
       .lead {
         font-size: 17px;
+      }
+
+      .recommendation-card {
+        padding: 18px;
       }
 
       section {
@@ -1139,6 +1176,7 @@
         <a href="#profile" data-i18n="navProfile">Профиль</a>
         <a href="#projects" data-i18n="navProjects">Проекты</a>
         <a href="#resume" data-i18n="navResume">Резюме</a>
+        <a href="#recommendations" data-i18n="navRecommendations">Рекомендации</a>
         <a href="#contact" data-i18n="navContact">Контакты</a>
       </nav>
       <div class="nav-actions" aria-label="Настройки отображения">
@@ -1566,6 +1604,23 @@
       </div>
     </section>
 
+    <section id="recommendations">
+      <div class="shell">
+        <div class="section-head">
+          <h2 data-i18n="recommendationsTitle">Рекомендации</h2>
+          <p data-i18n="recommendationsLead">Подтверждение организационного опыта и работы с командами.</p>
+        </div>
+        <article class="recommendation-card">
+          <div>
+            <h3 data-i18n="recommendationTitle">Рекомендательное письмо от АРСК</h3>
+            <p data-i18n="recommendationText">В период с сентября по октябрь 2022 года помогала организовывать мероприятия, согласовывала разрешения и поддержку проекта, вела делопроизводство и взаимодействовала с командами и участниками.</p>
+            <div class="recommendation-meta" data-i18n="recommendationMeta">Ассоциация русскоговорящих Северного Кипра · 2022</div>
+          </div>
+          <a class="button primary" href="recommendations/recommendation-arsk-2022.pdf" target="_blank" rel="noreferrer" data-i18n="recommendationOpen">Открыть письмо</a>
+        </article>
+      </div>
+    </section>
+
     <section id="contact">
       <div class="shell">
         <div class="contact">
@@ -1599,6 +1654,7 @@
         navProfile: "Профиль",
         navProjects: "Проекты",
         navResume: "Опыт",
+        navRecommendations: "Рекомендации",
         navContact: "Контакты",
         themeSage: "Светлая",
         themeDark: "Темная",
@@ -1709,6 +1765,12 @@
         project4Artifact: "BI-прототип",
         project4Dataset: "Скачать KPI CSV",
         project4Database: "SQLite-база",
+        recommendationsTitle: "Рекомендации",
+        recommendationsLead: "Подтверждение организационного опыта и работы с командами.",
+        recommendationTitle: "Рекомендательное письмо от АРСК",
+        recommendationText: "В период с сентября по октябрь 2022 года помогала организовывать мероприятия, согласовывала разрешения и поддержку проекта, вела делопроизводство и взаимодействовала с командами и участниками.",
+        recommendationMeta: "Ассоциация русскоговорящих Северного Кипра · 2022",
+        recommendationOpen: "Открыть письмо",
         resumeTitle: "Опыт",
         resumeLead: "Короткая версия для рекрутера: актуальные роли, стек, образование и формат работы. Проекты выше показывают, как эти навыки выглядят в артефактах.",
         resumePdf: "Просмотреть или скачать PDF",
@@ -1742,6 +1804,7 @@
         navProfile: "Profile",
         navProjects: "Projects",
         navResume: "Experience",
+        navRecommendations: "Recommendations",
         navContact: "Contacts",
         themeSage: "Light",
         themeDark: "Dark",
@@ -1852,6 +1915,12 @@
         project4Artifact: "BI prototype",
         project4Dataset: "Download KPI CSV",
         project4Database: "SQLite database",
+        recommendationsTitle: "Recommendations",
+        recommendationsLead: "Evidence of organizational experience and teamwork.",
+        recommendationTitle: "Reference letter from ARSK",
+        recommendationText: "From September to October 2022, supported event organization, coordinated permissions and project support, maintained document flow and worked with teams and participants.",
+        recommendationMeta: "Association of Russian-Speaking Northern Cyprus · 2022",
+        recommendationOpen: "Open letter",
         resumeTitle: "Experience",
         resumeLead: "A short recruiter version: current roles, stack, education and work format. The projects above show how these skills look in real artifacts.",
         resumePdf: "View or download PDF",
