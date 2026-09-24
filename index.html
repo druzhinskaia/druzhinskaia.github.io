@@ -865,26 +865,6 @@
       font-size: 21px;
     }
 
-    .quote-band {
-      padding: 38px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--ink);
-      color: var(--paper);
-    }
-
-    .quote-band p {
-      max-width: 880px;
-      margin-bottom: 20px;
-      font-size: clamp(22px, 3vw, 34px);
-      line-height: 1.18;
-    }
-
-    .quote-band span {
-      color: #cbd4ce;
-      font-weight: 750;
-    }
-
     .contact {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
@@ -1105,7 +1085,6 @@
       .profile-panel,
       .resume-card,
       .timeline,
-      .quote-band,
       .contact {
         padding: 20px;
       }
@@ -1597,14 +1576,6 @@
       </div>
     </section>
 
-    <section>
-      <div class="shell">
-        <div class="quote-band">
-          <p data-i18n="quoteText">Мне близка аналитика, в которой результат можно открыть, проверить и использовать: таблица считает, требования объясняют задачу, BPMN показывает процесс, а отчет помогает принять решение.</p>
-        </div>
-      </div>
-    </section>
-
     <section id="recommendations">
       <div class="shell">
         <div class="section-head">
@@ -1798,7 +1769,6 @@
         certificateDate: "Сертификат · 2026",
         certificateTitle: "Кадровый учет в УАИС «Бюджетный учет». 1С",
         certificateText: "Обучение по кадровому учету в системе «Бюджетный учет». 1С; роль в программе — кадровик. Сертификат выдан 20.03.2026 и действует 3 года.",
-        quoteText: "Мне близка аналитика, в которой результат можно открыть, проверить и использовать: таблица считает, требования объясняют задачу, BPMN показывает процесс, а отчет помогает принять решение.",
         contactTitle: "Контакты",
         contactText: "Рассматриваю удалённые позиции аналитика данных, аналитика отчётности и специалиста по автоматизации. В репозиториях — готовые аналитические артефакты и демонстрационные материалы.",
         phoneButton: "Телефон",
@@ -1953,7 +1923,6 @@
         certificateDate: "Certificate · 2026",
         certificateTitle: "HR Records in the 1C Budget Accounting System",
         certificateText: "Training in HR records in the 1C Budget Accounting system; programme role: HR specialist. Issued on 20 March 2026, valid for three years.",
-        quoteText: "I like analytics where the result can be opened, checked and used: a spreadsheet calculates, requirements explain the task, BPMN shows the process, and a report supports a decision.",
         contactTitle: "Contacts",
         contactText: "Seeking remote data analyst, reporting analyst and automation roles. The repositories contain completed analytical artifacts and demonstration materials.",
         phoneButton: "Phone",
@@ -2033,7 +2002,7 @@
     });
 
     const revealItems = document.querySelectorAll(
-      ".section-head, .profile-panel, .project, .resume-card, .timeline, .quote-band, .contact, .hero-visual"
+      ".section-head, .profile-panel, .project, .resume-card, .timeline, .contact, .hero-visual"
     );
 
     if ("IntersectionObserver" in window) {
