@@ -1620,6 +1620,7 @@
   <script>
     const translations = {
       ru: {
+        resumePdfUrl: "output/pdf/druzhinskaya-ekaterina-resume.pdf?v=c8b879ca",
         pageTitle: "Дружинская Екатерина / Druzhinskaya Ekaterina · resume",
         description: "Екатерина Дружинская — аналитик данных и автоматизации. Excel, Power Query, VBA, 1С, SQL, Python/pandas, контроль качества данных и аналитические проекты.",
         navProfile: "Профиль",
@@ -1773,6 +1774,7 @@
         footerText: "© 2026 Екатерина Дружинская. Аналитическое портфолио и резюме."
       },
       en: {
+        resumePdfUrl: "output/pdf/druzhinskaya-ekaterina-resume-en.pdf?v=120bf400",
         pageTitle: "Druzhinskaya Ekaterina / Екатерина Дружинская · resume",
         description: "Ekaterina Druzhinskaya — data and automation analyst. Excel, Power Query, VBA, 1C, SQL, Python/pandas, data quality and analytics projects.",
         navProfile: "Profile",
@@ -1934,6 +1936,7 @@
     const descriptionMeta = document.querySelector('meta[name="description"]');
 
     function applyLanguage(language) {
+      language = language === "en" ? "en" : "ru";
       const dictionary = translations[language] || translations.ru;
       root.lang = language;
       document.title = dictionary.pageTitle;
@@ -1944,6 +1947,10 @@
         if (dictionary[key]) {
           element.textContent = dictionary[key];
         }
+      });
+
+      document.querySelectorAll('[data-i18n="heroPdf"], [data-i18n="resumePdf"]').forEach((link) => {
+        link.setAttribute("href", dictionary.resumePdfUrl);
       });
 
       languageButtons.forEach((button) => {
