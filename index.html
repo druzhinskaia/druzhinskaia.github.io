@@ -1122,6 +1122,156 @@
         transform: none;
       }
     }
+  
+    /* Interactive hero: automatic sphere + vertical code typing, no controls */
+    .hero-lab {
+      position: relative;
+      min-height: 560px;
+      background:
+        radial-gradient(circle at 24% 22%, rgba(12, 119, 111, 0.16), transparent 34%),
+        radial-gradient(circle at 82% 32%, rgba(47, 95, 145, 0.12), transparent 30%),
+        var(--paper);
+    }
+    .lab-stage {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(190px, .78fr) minmax(260px, 1.22fr);
+      gap: 20px;
+      align-items: center;
+      min-height: 292px;
+      padding: 24px 24px 12px;
+      overflow: hidden;
+    }
+    .data-orbit {
+      position: relative;
+      width: min(230px, 100%);
+      aspect-ratio: 1;
+      margin: auto;
+      border-radius: 50%;
+      transform-style: preserve-3d;
+      animation: orbit-float 6s ease-in-out infinite;
+      filter: drop-shadow(0 20px 28px rgba(12, 119, 111, .15));
+    }
+    .orbit-core {
+      position: absolute;
+      inset: 27%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), rgba(255,255,255,.18) 24%, transparent 25%),
+        radial-gradient(circle at 38% 36%, var(--teal), var(--blue) 62%, var(--ink));
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--teal) 45%, transparent), 0 0 55px rgba(12, 119, 111, .28);
+      animation: core-pulse 3.8s ease-in-out infinite;
+    }
+    .orbit-ring {
+      position: absolute;
+      inset: 10%;
+      border: 1px solid color-mix(in srgb, var(--teal) 54%, transparent);
+      border-radius: 50%;
+      animation: ring-spin 9s linear infinite;
+    }
+    .orbit-ring-a { transform: rotateX(67deg) rotateZ(12deg); }
+    .orbit-ring-b {
+      inset: 18%;
+      border-color: color-mix(in srgb, var(--blue) 56%, transparent);
+      transform: rotateY(63deg) rotateZ(-22deg);
+      animation-duration: 7s;
+      animation-direction: reverse;
+    }
+    .orbit-ring-c {
+      inset: 5%;
+      border-style: dashed;
+      border-color: color-mix(in srgb, var(--coral) 44%, transparent);
+      transform: rotateX(32deg) rotateY(56deg);
+      animation-duration: 12s;
+    }
+    .orbit-dot {
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 18px currentColor;
+      animation: dot-drift 4.8s ease-in-out infinite;
+    }
+    .orbit-dot-1 { top: 16%; left: 49%; }
+    .orbit-dot-2 { top: 47%; right: 9%; animation-delay: -1.2s; background: var(--blue); }
+    .orbit-dot-3 { bottom: 13%; left: 31%; animation-delay: -2.3s; background: var(--coral); }
+    .orbit-dot-4 { top: 42%; left: 8%; animation-delay: -3.1s; background: var(--amber); }
+    .lab-code {
+      min-height: 226px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #111714;
+      box-shadow: 0 18px 38px rgba(0,0,0,.18);
+    }
+    .code-head {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 38px;
+      padding: 0 12px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      color: #8fa198;
+      font: 700 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    .code-head span { width: 8px; height: 8px; border-radius: 50%; background: #536059; }
+    .code-head b { margin-left: 5px; font-weight: 700; }
+    #hero-code {
+      min-height: 188px;
+      margin: 0;
+      padding: 14px 16px 18px;
+      color: #d8e7df;
+      white-space: pre-wrap;
+      overflow: hidden;
+      font: 600 11.5px/1.64 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    #hero-code::after {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 1.05em;
+      margin-left: 3px;
+      vertical-align: -2px;
+      background: #7fd5c8;
+      animation: caret-blink .8s steps(1) infinite;
+    }
+    .lab-shot-wrap { padding-top: 10px; }
+    @keyframes ring-spin { from { rotate: 0deg; } to { rotate: 360deg; } }
+    @keyframes orbit-float {
+      0%, 100% { transform: translateY(4px) rotate(-1deg) scale(.98); }
+      50% { transform: translateY(-8px) rotate(2deg) scale(1.02); }
+    }
+    @keyframes core-pulse { 0%, 100% { transform: scale(.92); } 50% { transform: scale(1.06); } }
+    @keyframes dot-drift {
+      0%, 100% { transform: translate3d(0,0,0) scale(.9); opacity: .72; }
+      50% { transform: translate3d(5px,-8px,0) scale(1.2); opacity: 1; }
+    }
+    @keyframes caret-blink { 50% { opacity: 0; } }
+    footer .shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .footer-telegram {
+      color: var(--teal-dark);
+      font-weight: 850;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+    @media (max-width: 720px) {
+      .lab-stage { grid-template-columns: 1fr; padding: 20px 16px 10px; }
+      .data-orbit { width: 176px; }
+      .hero-lab { min-height: 0; }
+      #hero-code { font-size: 10.5px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .data-orbit, .orbit-ring, .orbit-core, .orbit-dot, #hero-code::after { animation: none !important; }
+    }
+
   </style>
 </head>
 <body>
@@ -1181,28 +1331,24 @@
           </div>
         </div>
 
-        <div class="hero-visual" aria-label="Визуальная сводка портфолио">
-          <div class="visual-top">
-            <div class="visual-tile">
-              <b>SQL</b>
-              <span class="bar" style="width: 92%"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
+        <div class="hero-visual hero-lab" aria-label="Интерактивная визуализация аналитической работы">
+          <div class="lab-stage">
+            <div class="data-orbit" aria-hidden="true">
+              <span class="orbit-ring orbit-ring-a"></span>
+              <span class="orbit-ring orbit-ring-b"></span>
+              <span class="orbit-ring orbit-ring-c"></span>
+              <span class="orbit-core"></span>
+              <span class="orbit-dot orbit-dot-1"></span>
+              <span class="orbit-dot orbit-dot-2"></span>
+              <span class="orbit-dot orbit-dot-3"></span>
+              <span class="orbit-dot orbit-dot-4"></span>
             </div>
-            <div class="visual-tile">
-              <b>BI</b>
-              <span class="bar" style="width: 84%"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-            </div>
-            <div class="visual-tile">
-              <b data-i18n="visual1c">1С</b>
-              <span class="bar" style="width: 78%"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
+            <div class="lab-code" aria-label="Автоматически печатающийся код">
+              <div class="code-head"><span></span><span></span><span></span><b>analytics.py</b></div>
+              <pre id="hero-code" aria-live="off"></pre>
             </div>
           </div>
-          <div class="visual-main">
+          <div class="visual-main lab-shot-wrap">
             <div class="dashboard-shot">
               <img src="portfolio-projects/03-sales-feedback-python-analytics/screenshots/00_executive_dashboard.png" alt="Управленческий дашборд проекта Customer Feedback & Sales Analytics">
               <div class="caption">
@@ -1614,10 +1760,48 @@
   <footer>
     <div class="shell">
       <span data-i18n="footerText">© 2026 Екатерина Дружинская. Аналитическое портфолио и резюме.</span>
+      <a class="footer-telegram" href="https://t.me/dru_zh" target="_blank" rel="noreferrer">Telegram · @dru_zh ↗</a>
     </div>
   </footer>
 
   <script>
+
+    const heroCode = document.getElementById("hero-code");
+    const heroCodeLines = [
+      "import pandas as pd",
+      "from pathlib import Path",
+      "",
+      "data = pd.read_excel(Path('1c_export.xlsx'))",
+      "data = data.drop_duplicates()",
+      "data['match'] = data['amount'].eq(data['payment'])",
+      "errors = data.loc[~data['match']]",
+      "result = errors.groupby('status').size()",
+      "",
+      "print(result)"
+    ];
+
+    async function runHeroCode() {
+      if (!heroCode) return;
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        heroCode.textContent = heroCodeLines.join("\n");
+        return;
+      }
+      while (true) {
+        heroCode.textContent = "";
+        for (let i = 0; i < heroCodeLines.length; i += 1) {
+          const line = heroCodeLines[i];
+          for (let j = 0; j <= line.length; j += 1) {
+            heroCode.textContent = heroCodeLines.slice(0, i).join("\n") + (i ? "\n" : "") + line.slice(0, j);
+            await new Promise(resolve => setTimeout(resolve, 24));
+          }
+          await new Promise(resolve => setTimeout(resolve, 125));
+        }
+        await new Promise(resolve => setTimeout(resolve, 1700));
+      }
+    }
+    runHeroCode();
+
     const translations = {
       ru: {
         resumePdfUrl: "output/pdf/druzhinskaya-ekaterina-resume.pdf?v=c8b879ca",
@@ -1630,8 +1814,8 @@
         navContact: "Контакты",
         themeSage: "Светлая",
         themeDark: "Темная",
-        heroTitle: "Аналитика и автоматизация",
-        heroLead: "Работаю с финансовыми данными, проверяю выгрузки из 1С и автоматизирую отчётность с помощью Excel, Power Query и VBA. Для анализа данных и построения дашбордов использую SQL и Python.",
+        heroTitle: "Екатерина Дружинская",
+        heroLead: "Аналитик AI-автоматизации. Работаю с большими объёмами данных, Excel/VBA, 1С, SQL, Python и BI-отчётностью; использую ИИ-инструменты для ускорения анализа и автоматизации повторяющихся процессов.",
         heroProjects: "Смотреть проекты",
         heroPortfolio: "Портфолио online",
         heroGithub: "GitHub профиль",
@@ -1784,8 +1968,8 @@
         navContact: "Contacts",
         themeSage: "Light",
         themeDark: "Dark",
-        heroTitle: "Analytics and Automation",
-        heroLead: "I work with financial data, validate 1C exports and automate reporting with Excel, Power Query and VBA. I use SQL and Python to analyze data and build dashboards.",
+        heroTitle: "Ekaterina Druzhinskaya",
+        heroLead: "AI Automation Analyst. I work with large datasets, Excel/VBA, 1C, SQL, Python and BI reporting, using AI tools to accelerate analysis and automate repetitive workflows.",
         heroProjects: "View projects",
         heroPortfolio: "Online portfolio",
         heroGithub: "GitHub profile",
