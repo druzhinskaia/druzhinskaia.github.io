@@ -26,8 +26,8 @@ EN = {
     "Екатерина Дружинская": "Ekaterina Druzhinskaia",
     "Аналитик данных и автоматизации": "Data and Automation Analyst",
     "Удалённая работа, готова к командировкам": "Remote work · Available for business travel",
-    "Автоматизирую отчётность и проверки финансовых и операционных данных в Excel и 1С. Описываю требования, тестирую решения, готовлю инструкции и обучаю пользователей.":
-        "I automate reporting and validation of financial and operational data in Excel and 1C. I document requirements, test solutions, prepare user guides and train users.",
+    "Автоматизирую отчётность и проверки данных в Excel и 1С. Описываю требования, тестирую решения, готовлю инструкции и обучаю пользователей.":
+        "I automate reporting and validation of data in Excel and 1C. I document requirements, test solutions, prepare user guides and train users.",
     "КОМПЕТЕНЦИИ": "SKILLS",
     "ОПЫТ РАБОТЫ": "EXPERIENCE",
     "ПРОЕКТЫ": "PROJECTS",
@@ -39,8 +39,8 @@ EN = {
     "Старший аналитик по ИИ-автоматизации": "Senior AI Automation Analyst",
     "МИ ФНС России по управлению долгом": "Interregional Inspectorate for Debt Management, Federal Tax Service of Russia",
     "н. в.": "present",
-    "Сопоставляю платежи и документы в 1С:БГУ и системах ФНС, выявляю расхождения, готовлю аналитические материалы. Автоматизирую проверки в Excel и применяю ИИ-инструменты для отдельных рабочих задач.":
-        "I reconcile payments and documents in 1C:BGU and Federal Tax Service systems, identify discrepancies and prepare analytical reports. I automate checks in Excel and use AI tools for selected work tasks.",
+    "Анализирую данные в 1С и информационных системах, сопоставляю выгрузки, выявляю расхождения, готовлю аналитические материалы. Автоматизирую проверки в Excel и применяю ИИ-инструменты для отдельных рабочих задач.":
+        "I analyse data in 1C and information systems and reconcile exports, identify discrepancies and prepare analytical reports. I automate checks in Excel and use AI tools for selected work tasks.",
     "Ведущий аналитик": "Lead Analyst",
     "ГАУ ИТЦ «Соцзащита» Москвы": "Moscow Social Protection IT Centre (GAU ITC)",
     "Вела проект автоматизации Excel-отчётности для <b>120-140 организаций</b>: анализировала процесс, обновляла форму, настраивала контроль качества данных и тестировала решение. Подготовила документацию, обучила пользователей и сопровождала внедрение.":
@@ -187,7 +187,7 @@ def build(language="ru"):
         '   ·   <link href="https://www.linkedin.com/in/ekaterinadruzhinskaia/" color="#24594F">LinkedIn</link>'
         '   ·   Удалённая работа, готова к командировкам', small))
     story.extend([Spacer(1, 8), p(
-        "Автоматизирую отчётность и проверки финансовых и операционных данных в Excel и 1С. "
+        "Автоматизирую отчётность и проверки данных в Excel и 1С. "
         "Описываю требования, тестирую решения, готовлю инструкции и обучаю пользователей.")])
 
     section("Компетенции")
@@ -198,7 +198,7 @@ def build(language="ru"):
     section("Опыт работы")
     job("Старший аналитик по ИИ-автоматизации", "МИ ФНС России по управлению долгом",
         "09.2026 - н. в.",
-        "Сопоставляю платежи и документы в 1С:БГУ и системах ФНС, выявляю расхождения, "
+        "Анализирую данные в 1С и информационных системах, сопоставляю выгрузки, выявляю расхождения, "
         "готовлю аналитические материалы. Автоматизирую проверки в Excel и применяю "
         "ИИ-инструменты для отдельных рабочих задач.")
     job("Ведущий аналитик", 'ГАУ ИТЦ «Соцзащита» Москвы', "12.2025 - 04.2026",
@@ -266,3 +266,4 @@ def build(language="ru"):
 if __name__ == "__main__":
     build("ru")
     build("en")
+
