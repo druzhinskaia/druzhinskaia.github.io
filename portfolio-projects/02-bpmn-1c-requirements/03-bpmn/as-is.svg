@@ -31,3 +31,4 @@
   <rect x="330" y="95" width="210" height="80" rx="4" fill="#F4CCCC" stroke="#C00000" stroke-width="2"/><text text-anchor="middle" font-size="12" fill="#1F2933"><tspan x="435" y="119">Проблема: нет единого</tspan><tspan x="435" y="136">канала и обязательных</tspan><tspan x="435" y="153">полей</tspan></text>
   <rect x="1210" y="385" width="230" height="80" rx="4" fill="#F4CCCC" stroke="#C00000" stroke-width="2"/><text text-anchor="middle" font-size="12" fill="#1F2933"><tspan x="1325" y="409">Проблема: статусы и</tspan><tspan x="1325" y="426">сроки контролируются</tspan><tspan x="1325" y="443">вручную</tspan></text>
 </svg>
+

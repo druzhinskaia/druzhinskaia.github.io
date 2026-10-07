@@ -1,16 +1,7 @@
 # Модель данных
 
-| Таблица | Назначение | Ключевые поля |
-|---|---|---|
-| customers | клиенты и сегменты | customer_id, segment, region |
-| products | товары и категории | product_id, category, target_margin |
-| orders | заказы и каналы продаж | order_id, order_date, customer_id, channel, status |
-| order_items | строки заказов | item_id, order_id, product_id, quantity, line_revenue, line_cost |
-| payments | оплаты и задолженность | payment_id, order_id, payment_status, paid_amount, due_date |
+customers 1:N orders; orders 1:N order_items; products 1:N order_items; orders 1:N payments. Первичные ключи уникальны; внешний ключ включён при загрузке. Каждая строка items относится к продукту и заказу.
 
-Связи:
+order_totals и payment_totals имеют одну строку на order_id. sales_order_mart соединяет эти агрегаты через LEFT JOIN, поэтому несколько оплат не размножают позиции, а отсутствие оплаты не исключает заказ.
 
-- один клиент может иметь много заказов;
-- один заказ может содержать несколько строк товаров;
-- каждая строка заказа связана с одним продуктом;
-- каждый заказ имеет запись об оплате.
+Текущие payments содержат одну запись на заказ. Расширение 1:N разрешено только для отдельных непересекающихся сумм, не последовательных накопительных остатков. Время оплаты отсутствует. Даты хранятся ISO-8601 текстом, проверяются Python-загрузчиком; SQLite CHECK не заменяет проверку календарной даты. Исходная скидка — справочный признак; line_revenue уже рассчитана источником.

@@ -1,0 +1,9 @@
+{
+  "records": 326,
+  "events": 26,
+  "bad_record_share": 0.07975460122699386,
+  "high": 23,
+  "cutoff": "2026-06-25",
+  "registry_capacity": 512,
+  "checks": "missing manager and appended order mutation tests passed"
+}

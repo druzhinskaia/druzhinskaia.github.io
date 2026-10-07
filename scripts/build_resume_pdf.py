@@ -36,7 +36,7 @@ EN = {
     "Базовый уровень": "Basic proficiency",
     "Методы": "Methods",
     "Анализ процессов · Требования": "Process analysis · Requirements",
-    "Старший аналитик по ИИ-автоматизации": "Senior AI Automation Analyst",
+    "Аналитик данных и ИИ-автоматизации": "Data and AI Automation Analyst",
     "МИ ФНС России по управлению долгом": "Interregional Inspectorate for Debt Management, Federal Tax Service of Russia",
     "н. в.": "present",
     "Анализирую данные в 1С и информационных системах, сопоставляю выгрузки, выявляю расхождения, готовлю аналитические материалы. Автоматизирую проверки в Excel и применяю ИИ-инструменты для отдельных рабочих задач.":
@@ -57,16 +57,16 @@ EN = {
     "Помогала организовывать мероприятия: согласовывала разрешения, вела документооборот и взаимодействовала с командами. ":
         "Supported event organisation: coordinated permits, managed documentation and worked with teams. ",
     "Рекомендательное письмо": "Recommendation letter",
-    "Контроль качества: <b>326 записей, 24 события ошибок</b>. Дубли, пропуски, связи, суммы, статусы и даты. Результат: Excel-отчёт, реестр ошибок и план исправлений.":
-        "Data quality checks: <b>326 records, 24 error occurrences</b>. Duplicates, missing values, relationships, amounts, statuses and dates. Deliverables: Excel report, error register and remediation plan.",
+    "Контроль качества: <b>326 записей, обновляемый реестр</b>. Дубли, пропуски, связи, суммы, статусы и даты. Результат: Excel-отчёт, реестр ошибок и план исправлений.":
+        "Data quality checks: <b>326 records, an updating error register</b>. Duplicates, missing values, relationships, amounts, statuses and dates. Deliverables: Excel report, error register and remediation plan.",
     "Автоматизация заявок: AS-IS / TO-BE, требования, RTM, макет формы, ТЗ, критерии приёмки и тестовые сценарии.":
         "Request processing automation: AS-IS / TO-BE, requirements, RTM, form mockup, specification, acceptance criteria and test scenarios.",
-    "Продажи и обратная связь: очистка данных, NPS, операционные метрики, гипотезы, проблемные категории и рекомендации.":
-        "Sales and customer feedback: data cleaning, NPS, operational metrics, hypotheses, problem categories and recommendations.",
+    "Продажи и обратная связь: валидация данных, оценки 1–5, взвешенная маржа, приоритеты и воспроизводимый запуск.":
+        "Sales and customer feedback: data cleaning, 1–5 ratings, weighted margin, priorities and a reproducible pipeline.",
     "Модель из <b>5 таблиц, 1 660 заказов</b>: SQLite, JOIN, CTE, BI-прототип с KPI по выручке, маржинальности и дебиторской задолженности.":
         "Model with <b>5 tables and 1,660 orders</b>: SQLite, JOIN, CTE and a BI prototype with revenue, margin and accounts receivable KPIs.",
-    "Кейсы основаны на коммерческих задачах. Публикуемые данные и отдельные показатели обезличены и реконструированы для соблюдения конфиденциальности.":
-        "Cases are based on commercial tasks. Published data and selected metrics are anonymised and reconstructed to protect confidentiality.",
+    "Проекты основаны на собственных данных и исходных задачах автора. Реализация и ограничения описаны в репозиториях.":
+        "Projects use the author’s own data and source tasks. Implementation and limitations are documented in the repositories.",
     "Магистратура · Бизнес-информатика": "Master's degree · Business Informatics",
     "Профиль: Информационная бизнес-аналитика": "Specialisation: Information Business Analytics",
     "Московский финансово-юридический университет МФЮА, Москва": "Moscow University of Finance and Law (MFUA), Moscow",
@@ -196,7 +196,7 @@ def build(language="ru"):
     story.append(p("<b>Методы</b>   Анализ процессов · Требования · BPMN · AS-IS / TO-BE · RTM"))
 
     section("Опыт работы")
-    job("Старший аналитик по ИИ-автоматизации", "МИ ФНС России по управлению долгом",
+    job("Аналитик данных и ИИ-автоматизации", "МИ ФНС России по управлению долгом",
         "09.2026 - н. в.",
         "Анализирую данные в 1С и информационных системах, сопоставляю выгрузки, выявляю расхождения, "
         "готовлю аналитические материалы. Автоматизирую проверки в Excel и применяю "
@@ -219,12 +219,12 @@ def build(language="ru"):
 
     section("Проекты")
     projects = [
-        ("1С / Excel", "Контроль качества: <b>326 записей, 24 события ошибок</b>. "
+        ("1С / Excel", "Контроль качества: <b>326 записей, обновляемый реестр</b>. "
          "Дубли, пропуски, связи, суммы, статусы и даты. Результат: Excel-отчёт, реестр ошибок и план исправлений."),
         ("BPMN / 1С", "Автоматизация заявок: AS-IS / TO-BE, требования, RTM, макет формы, "
          "ТЗ, критерии приёмки и тестовые сценарии."),
-        ("Python / BI", "Продажи и обратная связь: очистка данных, NPS, операционные метрики, "
-         "гипотезы, проблемные категории и рекомендации."),
+        ("Python / BI", "Продажи и обратная связь: валидация данных, оценки 1–5, "
+         "взвешенная маржа, приоритеты и воспроизводимый запуск."),
         ("SQL / BI", "Модель из <b>5 таблиц, 1 660 заказов</b>: SQLite, JOIN, CTE, "
          "BI-прототип с KPI по выручке, маржинальности и дебиторской задолженности."),
     ]
@@ -238,8 +238,8 @@ def build(language="ru"):
         ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
     ]))
     story.append(table)
-    story.append(p("Кейсы основаны на коммерческих задачах. Публикуемые данные и отдельные "
-                   "показатели обезличены и реконструированы для соблюдения конфиденциальности.", note))
+    story.append(p("Проекты основаны на собственных данных и исходных задачах автора. "
+                   "Реализация и ограничения описаны в репозиториях.", note))
 
     section("Образование")
     story.append(KeepTogether([
@@ -266,4 +266,5 @@ def build(language="ru"):
 if __name__ == "__main__":
     build("ru")
     build("en")
+
 

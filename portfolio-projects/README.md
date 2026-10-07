@@ -1,14 +1,8 @@
-# Portfolio Projects
+# Проекты
 
-Раздел с аналитическими кейсами, оформленными как рабочие материалы для внутреннего заказчика: бизнес-контекст, проблема, метрики, анализ, решение, артефакты и итоговые рекомендации.
+Данные и исходные задачи предоставлены автором. Основные версии — в отдельных репозиториях; копии в этом каталоге синхронизированы для сайта. В каждом проекте есть README RU/EN с запуском, составом реализации и ограничениями.
 
-## Структура
-
-- `01-data-quality-excel-reporting` - Data Quality Control for 1C Exports.
-- `02-bpmn-1c-requirements` - 1C Order Processing Automation.
-- `03-sales-feedback-python-analytics` - Customer Feedback & Sales Analytics.
-- `04-sql-bi-dashboard` - Sales Performance SQL & BI Dashboard.
-
-## Данные
-
-Проекты основаны на коммерческих задачах. Открытые наборы данных, названия и отдельные показатели обезличены и реконструированы для соблюдения конфиденциальности, поэтому не повторяют исходные рабочие выгрузки. При этом сохранены структура задач, подход к анализу и состав артефактов.
+- [Excel](01-data-quality-excel-reporting/README.md)
+- [1С: спецификация](02-bpmn-1c-requirements/README.md)
+- [Python](03-sales-feedback-python-analytics/README.md)
+- [SQL / дашборд](04-sql-bi-dashboard/README.md)

@@ -1,0 +1,30 @@
+{
+  "rows": 4995,
+  "raw_columns": [
+    "order_id",
+    "order_date",
+    "customer_id",
+    "region",
+    "channel",
+    "manager",
+    "category",
+    "product",
+    "quantity",
+    "discount",
+    "revenue",
+    "cost",
+    "rating",
+    "feedback_reason",
+    "response_time_hours",
+    "is_return"
+  ],
+  "priority_weights": {
+    "revenue": 0.4,
+    "problem_share": 0.4,
+    "rating": 0.2
+  },
+  "period": [
+    "2026-01-01",
+    "2026-06-30"
+  ]
+}

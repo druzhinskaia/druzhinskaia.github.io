@@ -1,7 +1,8 @@
+.bail on
+-- Run from repository root with SQLite CLI >= 3.32 (CSV header skip).
 .mode csv
-.headers on
-.import data/customers.csv customers
-.import data/products.csv products
-.import data/orders.csv orders
-.import data/order_items.csv order_items
-.import data/payments.csv payments
+.import --skip 1 data/customers.csv customers
+.import --skip 1 data/products.csv products
+.import --skip 1 data/orders.csv orders
+.import --skip 1 data/order_items.csv order_items
+.import --skip 1 data/payments.csv payments
