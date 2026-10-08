@@ -594,8 +594,9 @@
 
     .project-media img {
       width: 100%;
-      height: clamp(220px, 26vw, 330px);
-      padding: 14px;
+      height: auto;
+      aspect-ratio: 8 / 5;
+      padding: 0;
       object-fit: contain;
       object-position: center;
       transition: transform 0.3s ease, filter 0.3s ease;
@@ -1069,8 +1070,8 @@
       }
 
       .project-media img {
-        height: clamp(190px, 64vw, 260px);
-        padding: 10px;
+        height: auto;
+        padding: 0;
       }
 
       .visual-tile {
@@ -1204,7 +1205,7 @@
           </div>
           <div class="visual-main">
             <div class="dashboard-shot">
-              <img src="portfolio-projects/03-sales-feedback-python-analytics/screenshots/00_executive_dashboard.png" alt="Управленческий дашборд проекта Customer Feedback & Sales Analytics">
+              <img src="assets/project-covers/python.ru.svg" data-image-ru="assets/project-covers/python.ru.svg" data-image-en="assets/project-covers/python.en.svg" alt="Сравнение доли проблемных заказов по трём продуктам">
               <div class="caption">
                 <span data-i18n="heroShotTitle">Аналитика продаж и клиентской обратной связи</span>
                 <span data-i18n="heroShotMeta">Python / pandas / управленческие выводы</span>
@@ -1299,7 +1300,7 @@
         <div class="projects">
           <article class="project" data-tags="data business">
             <div class="project-media">
-              <img src="portfolio-projects/01-data-quality-excel-reporting/screenshots/05_dashboard.png" data-image-ru="portfolio-projects/01-data-quality-excel-reporting/screenshots/05_dashboard.png" data-image-en="portfolio-projects/01-data-quality-excel-reporting/screenshots/05_dashboard.en.png" alt="Excel-дашборд контроля качества данных">
+              <img src="assets/project-covers/excel.ru.svg" data-image-ru="assets/project-covers/excel.ru.svg" data-image-en="assets/project-covers/excel.en.svg" alt="Результат контроля качества: 326 записей, 26 записей с нарушениями">
             </div>
             <div class="project-body">
               <div class="project-kicker" data-i18n="project1Kicker">Excel / выгрузки 1С / качество данных</div>
@@ -1349,7 +1350,7 @@
 
           <article class="project" data-tags="business">
             <div class="project-media">
-              <img src="portfolio-projects/02-bpmn-1c-requirements/03-bpmn/to-be.png" data-image-ru="portfolio-projects/02-bpmn-1c-requirements/03-bpmn/to-be.png" data-image-en="portfolio-projects/02-bpmn-1c-requirements/03-bpmn/to-be.en.png" alt="TO-BE BPMN процесс обработки заявок">
+              <a href="portfolio-projects/02-bpmn-1c-requirements/03-bpmn/viewer.html" aria-label="Открыть полную BPMN-схему с увеличением"><img src="assets/project-covers/1c.ru.svg" data-image-ru="assets/project-covers/1c.ru.svg" data-image-en="assets/project-covers/1c.en.svg" alt="Фрагмент BPMN: регистрация, согласование и исполнение по дорожкам ролей"></a>
             </div>
             <div class="project-body">
               <div class="project-kicker" data-i18n="project2Kicker">BPMN / 1С / требования</div>
@@ -1399,7 +1400,7 @@
 
           <article class="project" data-tags="data bi">
             <div class="project-media">
-              <img src="portfolio-projects/03-sales-feedback-python-analytics/screenshots/04_priority_matrix.png" data-image-ru="portfolio-projects/03-sales-feedback-python-analytics/screenshots/04_priority_matrix.png" data-image-en="portfolio-projects/03-sales-feedback-python-analytics/screenshots/04_priority_matrix.en.png" alt="Матрица приоритетов по продуктам и обратной связи">
+              <a href="portfolio-projects/03-sales-feedback-python-analytics/screenshots/04_priority_matrix.png" aria-label="Открыть полную матрицу приоритетов"><img src="assets/project-covers/python.ru.svg" data-image-ru="assets/project-covers/python.ru.svg" data-image-en="assets/project-covers/python.en.svg" alt="Сравнение доли проблемных заказов по трём продуктам"></a>
             </div>
             <div class="project-body">
               <div class="project-kicker" data-i18n="project3Kicker">Python / pandas / клиентский опыт</div>
@@ -1449,7 +1450,7 @@
 
           <article class="project" data-tags="bi data">
             <div class="project-media">
-              <img src="portfolio-projects/04-sql-bi-dashboard/screenshots/dashboard.png" data-image-ru="portfolio-projects/04-sql-bi-dashboard/screenshots/dashboard.png" data-image-en="portfolio-projects/04-sql-bi-dashboard/screenshots/dashboard.en.png" alt="SQL и BI дашборд продаж">
+              <a href="portfolio-projects/04-sql-bi-dashboard/dashboard/" aria-label="Открыть интерактивный SQL-дашборд"><img src="assets/project-covers/sql.ru.svg" data-image-ru="assets/project-covers/sql.ru.svg" data-image-en="assets/project-covers/sql.en.svg" alt="SQL-модель: пять таблиц, 1660 заказов без отмен, 152,4 млн рублей выручки"></a>
             </div>
             <div class="project-body">
               <div class="project-kicker" data-i18n="project4Kicker">SQL / SQLite / BI-дашборд</div>
